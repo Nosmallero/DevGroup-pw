@@ -8,6 +8,6 @@ import pe.edu.upc.faveatfinal.model.entity.ReservationPayment;
 
 @Repository
 public interface ReservationPaymentRepository extends JpaRepository<ReservationPayment, Integer>{
-	List<ReservationPayment> findByIdAndName(Integer id, String nameReservation) throws Exception;
+	List<ReservationPayment> findByIdAndNameReservation(Integer id, String nameReservation) throws Exception;
 	
 }
