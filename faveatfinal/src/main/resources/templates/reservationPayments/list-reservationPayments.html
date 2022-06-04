@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Reservation Payments</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Reservation Payments
+	  </div>
+	  <div class="card-body">
+	    
+	    <table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Reservation Name</th>
+		      <th scope="col">Payment Amount</th>
+		      <th scope="col">Payment Type</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="reservationPayment : ${reservationPayments}">
+		      <th scope="row" th:text="${reservationPayment.id}">1</th>
+		      <td th:text="${reservationPayment.nameReservation}">Mark</td>
+		      <td th:text="${reservationPayment.paymentAmount}">Otto</td>
+		      <td th:text="${reservationPayment.paymentType.namePaymentType}">@mdo</td>
+		      <td>
+		      	<a class="btn btn-warning" th:href="@{'/reservationPayments/' + ${reservationPayment.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/reservationPayments/' + ${reservationPayment.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-primary" th:href="@{/reservationPayments/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>
