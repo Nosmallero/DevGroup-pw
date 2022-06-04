@@ -1,5 +1,6 @@
 package pe.edu.upc.faveatfinal.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -24,7 +25,12 @@ public class PaymentType {
 	
 	@OneToMany(mappedBy = "paymentType")
 	private List<ReservationPayment> reservationPayments;
+	
 
+	public PaymentType() {
+		reservationPayments = new ArrayList<>();
+	}
+	
 	public Integer getId() {
 		return id;
 	}
