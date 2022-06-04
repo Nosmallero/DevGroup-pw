@@ -22,8 +22,8 @@ public class ReservationPaymentServiceImpl implements ReservationPaymentService{
 	}
 
 	@Override
-	public List<ReservationPayment> findByIdAndName(Integer id, String nameReservation) throws Exception {
-		return this.reservationPaymentRepository.findByIdAndName(id, nameReservation);
+	public List<ReservationPayment> findByIdAndNameReservation(Integer id, String nameReservation) throws Exception {
+		return this.reservationPaymentRepository.findByIdAndNameReservation(id, nameReservation);
 	}
 
 }
