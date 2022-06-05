@@ -33,6 +33,9 @@ public class DeliveryManController {
 	
 	@GetMapping("new")
 	public String newDeliveryMan(Model model) {
+		DeliveryMan deliveryMan = new DeliveryMan();
+		model.addAttribute("deliveryman", deliveryMan);
+		
 		return "deliverymans/new-deliveryman";
 	}
 }
