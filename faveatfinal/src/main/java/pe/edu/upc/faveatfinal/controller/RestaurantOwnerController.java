@@ -8,26 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pe.edu.upc.faveatfinal.business.crud.CustomerService;
-import pe.edu.upc.faveatfinal.model.entity.Customer;
+import pe.edu.upc.faveatfinal.business.crud.RestaurantOwnerService;
+import pe.edu.upc.faveatfinal.model.entity.RestaurantOwner;
 
 @Controller
-@RequestMapping("/customers")
-public class CustomerController {
-
+@RequestMapping("/restaurantowners")
+public class RestaurantOwnerController {
 	@Autowired
-	private CustomerService customerService;
+	private RestaurantOwnerService restaurantOwnerService;
 	
 	@GetMapping
 	public String listCustomers(Model model) {
 		try {
-			List<Customer> customers = customerService.getAll();
-			model.addAttribute("customers", customers);
+			List<RestaurantOwner> restaurantowners = restaurantOwnerService.getAll();
+			model.addAttribute("restaurantowners", restaurantowners);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return "customers/list-customers";
+		return "restaurantowners/list-restaurantowners";
 	}
 }
