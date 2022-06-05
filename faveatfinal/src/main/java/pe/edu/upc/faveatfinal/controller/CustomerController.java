@@ -30,4 +30,9 @@ public class CustomerController {
 		
 		return "customers/list-customers";
 	}
+	
+	@GetMapping("new")
+	public String newCustomer(Model model) {
+		return "customers/new-customer";
+	}
 }
