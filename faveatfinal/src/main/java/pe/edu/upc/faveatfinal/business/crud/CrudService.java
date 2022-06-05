@@ -3,12 +3,8 @@ package pe.edu.upc.faveatfinal.business.crud;
 import java.util.List;
 import java.util.Optional;
 
-
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
-
-
 
 public interface CrudService<T, ID> {
 	
@@ -43,6 +39,5 @@ public interface CrudService<T, ID> {
 	default boolean existById(ID id) throws Exception{
 		return getJpaRepository().existsById(id);
 	}
-	
 	
 }

@@ -1,12 +1,14 @@
 package pe.edu.upc.faveatfinal.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -67,6 +69,65 @@ public class ReservationPaymentController {
 			e.printStackTrace();
 		}
 		return "redirect:/reservationPayments";
-	}  
+	}
+	
+	@GetMapping("{id}/edit") // /reservationPayments/1/edit
+	public String editReservationPayment(Model model, @PathVariable("id") Integer id) {
+		try {
+			if (reservationPaymentService.existById(id)) {
+				
+				Optional<ReservationPayment> optional = reservationPaymentService.findById(id);
+				model.addAttribute("reservationPayment", optional.get());
+				
+				List<PaymentType> paymentTypes = paymentTypeService.getAll();
+				model.addAttribute("paymentTypes", paymentTypes);
+			} 
+			else {
+				return "redirect:/reservationPayments";
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "reservationPayments/edit-reservationPayment";
+	}
+	
+	@PostMapping("{id}/update") //reservationPayments/1/update
+	public String updateReservationPayment(Model model, @ModelAttribute("reservationPayment") ReservationPayment reservationPayment,
+			@PathVariable("id") Integer id)
+	{
+		try {
+			if (reservationPaymentService.existById(id)) {
+			reservationPaymentService.update(reservationPayment);
+			}
+			else {
+				return "redirect:/reservationPayments";
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/reservationPayments";
+	}
+	
+	@GetMapping("{id}/del") //reservationPayments/1/del
+	public String deleteReservationPayment(Model model, @PathVariable("id") Integer id)
+	{
+		try {
+			if (reservationPaymentService.existById(id)) {
+			reservationPaymentService.deleteById(id);
+			}
+			else {
+				return "redirect:/reservationPayments";
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/reservationPayments";
+	}
 	
 }
