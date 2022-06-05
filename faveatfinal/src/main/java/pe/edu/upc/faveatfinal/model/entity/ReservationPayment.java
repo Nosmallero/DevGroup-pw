@@ -20,7 +20,7 @@ public class ReservationPayment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "nameReservation", length = 20, nullable = false)	
+	@Column(name = "nameReservation", length = 100, nullable = false)	
 	private String nameReservation;
 	
 	@Column(name = "paymentAmount", nullable = false)	
