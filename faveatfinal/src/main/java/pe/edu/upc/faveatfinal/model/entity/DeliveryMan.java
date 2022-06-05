@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
 @Entity
-@Table(name = "deliverymans", indexes = {@Index(columnList = "last_name", name = "customer_index_last_name")})
+@Table(name = "deliverymans", indexes = {@Index(columnList = "last_name", name = "deliveryman_index_last_name")})
 public class DeliveryMan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

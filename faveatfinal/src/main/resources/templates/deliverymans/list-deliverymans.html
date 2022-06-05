@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+	
+	<section class ="section">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">DeliveryMan</li>
+		  </ol>
+		</nav>
+	
+		<div class="card text-center">
+		  <div class="card-header">
+		    Customers
+		  </div>
+		  <div class="card-body">
+		    
+				<table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">#</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">First Name</th>
+				      <th scope="col">Last Name</th>
+				      <th scope="col">Phone</th>
+				      <th scope="col">Address</th>
+				      <th scope="col">sadsa </th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="deliveryman : ${deliverymans}">
+				      <th scope="row" th:text="${deliveryman.id}"></th>
+				      <td th:text="${deliveryman.email}"></td>
+				      <td th:text="${deliveryman.firstName}"></td>
+				      <td th:text="${deliveryman.lastName}"></td>
+				      <td th:text="${deliveryman.phone}"></td>
+				      <td th:text="${deliveryman.address}"></td>
+				      <td>
+				      <a class="btn btn-warning" href="#" role="button"><i class="fas fa-cog"></i></a>
+				      <a class="btn btn-secondary" href="#" role="button"><i class="fas fa-trash"></i></a>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+						    
+		  </div>
+		  <div class="card-footer text-muted">
+		   <a class="btn btn-danger" th:href="@{/deliverymans/new}" role="button"><i class="fas fa-plus-circle"></i></a>
+		  </div>
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

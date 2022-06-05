@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Insert customer</title>
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+	
+	<section class ="section">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page"><a href="#">Customer</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Create</li>
+		  </ol>
+		</nav>
+		
+		<div class="card text-center">
+		  <div class="card-header">
+		    Customers
+		  </div>
+		  <div class="card-body">
+		  
+		  
+		    </div>
+		  <div class="card-footer text-muted">
+		   <a class="btn btn-danger" href="#" role="button"><i class="fas fa-plus-circle"></i></a>
+		  </div>
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>
