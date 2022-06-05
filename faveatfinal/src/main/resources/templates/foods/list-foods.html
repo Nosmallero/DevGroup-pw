@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Lista de Comidas</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<main>
+		<section>
+		<nav aria-label="breadcrumb" class="mt-3 mx-5">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#"> Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page"> Foods</li>
+	  </ol>
+	</nav>
+			<div class="card  text-center margin-20">
+				<div class="card-body">
+
+					<h2 class="h3 mb-4 text-gray-800">Foods</h2>
+					<div class="card-footer text-muted text-end">
+						<a class="btn"  style="background-color:black; color:white" th:href="@{/foods/new}" role="button">
+							<i class="fas fa-plus"></i> New Food
+						</a>
+					</div>
+					<table class="table table-striped text-center">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Type Menu</th>
+								<th scope="col">Food</th>
+								<th scope="col">Description</th>
+								<th scope="col">Cost</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="food : ${foods}">
+								<th scope="row" th:text=${food.foodId}></th>
+								<td th:text=${food.menuRestaurant.type}></td>
+								<td th:text=${food.foodName}></td>
+								<td th:text=${food.description}></td>
+								<td th:text=${food.cost}></td>
+								<td><a class="btn btn-warning"
+									th:href="@{'/foods/' + ${food.foodId} + '/edit'}" role="button">
+										<i class="fas fa-edit"></i>
+								</a> <a class="btn btn-danger"
+									th:href="@{'/foods/' + ${food.foodId} + '/del'}" role="button">
+										<i class="fas fa-trash-alt"></i>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</section>
+		<section>
+
+			<div class="row d-flex justify-content-center">
+				<div class="card mb-3 mx-5 mt-5 mb-5 col-6"
+					style="max-width: 540px;" th:each="food : ${foods}">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<img src="..." class="img-fluid rounded-start" alt="...">
+						</div>
+						<div class="col-md-8" style="width: 18rem;">
+							<div class="card-body">
+								<h5 class="card-title" th:text=${food.foodName}></h5>
+								<p class="card-text text-end">
+									<small class="text-muted">S/.</small> <small class="text-muted"
+										th:text=${food.cost}></small>
+								</p>
+								<p class="card-text" th:text=${food.description}></p>
+								<a class="btn" th:href="@{/foods}"
+									style="background-color: #130d21; color: white; text-decoration: none"><i
+									class="fa-solid fa-plus"></i> Anadir al Carrito</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

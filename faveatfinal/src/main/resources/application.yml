@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/faveat
     username: postgres
-    password: diosteama
+    password: lapagol
   jpa:
     database: postgresql
     hibernate:
