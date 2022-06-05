@@ -43,8 +43,8 @@
 				      <td th:text="${deliveryman.phone}"></td>
 				      <td th:text="${deliveryman.address}"></td>
 				      <td>
-				      <a class="btn btn-warning" href="#" role="button"><i class="fas fa-cog"></i></a>
-				      <a class="btn btn-secondary" href="#" role="button"><i class="fas fa-trash"></i></a>
+				      <a class="btn btn-warning" th:href="@{'/deliverymans/' + ${deliveryman.id} + '/edit'}" role="button"><i class="fas fa-cog"></i></a>
+				      <a class="btn btn-danger" th:href="@{'/deliverymans/' + ${deliveryman.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
 				      </td>
 				    </tr>
 				  </tbody>

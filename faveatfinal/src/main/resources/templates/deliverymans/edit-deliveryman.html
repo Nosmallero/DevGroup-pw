@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>Insert DeliveryMan</title>
+	<title>Edit DeliveryMan</title>
 </head>
 <body>
 	<header th:insert="layout/layout :: frag-header"></header>
@@ -13,17 +13,17 @@
 		  <ol class="breadcrumb">
 		    <li class="breadcrumb-item"><a href="#">Home</a></li>
 		    <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/deliverymans}">Delivery Man</a></li>
-		    <li class="breadcrumb-item active" aria-current="page">Create</li>
+		    <li class="breadcrumb-item active" aria-current="page">Edit</li>
 		  </ol>
 		</nav>
 		
 		<div class="card text-center">
 		  <div class="card-header">
-		    Delivery Man
+		    Edit Delivery Man
 		  </div>
 		  <div class="card-body" style="text-align: left;">
 		  
-			<form th:action="@{/deliverymans/savenew}" th:object="${deliveryman}" method="post" class="row g-3 needs-validation" novalidate>
+			<form th:action="@{'/deliverymans/' + ${deliveryman.id} + '/update'}" th:object="${deliveryman}" method="post" class="row g-3 needs-validation" novalidate>
 			
 			
 				<div class="col-md-4">
@@ -68,7 +68,7 @@
 				</div>
 			 
 			  <div class="col-12" style="text-align: center;">
-			    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Create</button>
+			    <button class="btn btn-warning" type="submit"><i class="fas fa-plus"></i> Edit</button>
 			  </div>
 			</form>
 		  
