@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import pe.edu.upc.faveatfinal.business.crud.PaymentTypeService;
+import pe.edu.upc.faveatfinal.business.crud.CreditCardService;
 import pe.edu.upc.faveatfinal.business.crud.ReservationPaymentService;
-import pe.edu.upc.faveatfinal.model.entity.PaymentType;
+import pe.edu.upc.faveatfinal.model.entity.CreditCard;
 import pe.edu.upc.faveatfinal.model.entity.ReservationPayment;
 
 @Controller
@@ -27,7 +27,7 @@ public class ReservationPaymentController {
 	private ReservationPaymentService reservationPaymentService;
 	
 	@Autowired
-	private PaymentTypeService paymentTypeService;
+	private CreditCardService creditCardService;
 	
 	@GetMapping  // /reservationPayments
 	public String listReservationPayments(Model model) {
@@ -49,8 +49,8 @@ public class ReservationPaymentController {
 		ReservationPayment reservationPayment = new ReservationPayment();
 		model.addAttribute("reservationPayment", reservationPayment);
 		try {
-			List<PaymentType> paymentTypes = paymentTypeService.getAll();
-			model.addAttribute("paymentTypes", paymentTypes);
+			List<CreditCard> creditCards = creditCardService.getAll();
+			model.addAttribute("creditCards", creditCards);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -79,8 +79,8 @@ public class ReservationPaymentController {
 				Optional<ReservationPayment> optional = reservationPaymentService.findById(id);
 				model.addAttribute("reservationPayment", optional.get());
 				
-				List<PaymentType> paymentTypes = paymentTypeService.getAll();
-				model.addAttribute("paymentTypes", paymentTypes);
+				List<CreditCard> creditCards = creditCardService.getAll();
+				model.addAttribute("creditCards", creditCards);
 			} 
 			else {
 				return "redirect:/reservationPayments";
