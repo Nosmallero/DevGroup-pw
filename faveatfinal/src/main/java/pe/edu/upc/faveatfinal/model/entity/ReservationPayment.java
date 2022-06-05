@@ -27,8 +27,8 @@ public class ReservationPayment {
 	private float paymentAmount;
 	
 	@ManyToOne
-	@JoinColumn(name = "paymentType_id")
-	private PaymentType paymentType;
+	@JoinColumn(name = "creditCard_id")
+	private CreditCard creditCard;
 
 	public Integer getId() {
 		return id;
@@ -54,12 +54,12 @@ public class ReservationPayment {
 		this.paymentAmount = paymentAmount;
 	}
 
-	public PaymentType getPaymentType() {
-		return paymentType;
+	public CreditCard getCreditCard() {
+		return creditCard;
 	}
 
-	public void setPaymentType(PaymentType paymentType) {
-		this.paymentType = paymentType;
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
 	}
 
 }

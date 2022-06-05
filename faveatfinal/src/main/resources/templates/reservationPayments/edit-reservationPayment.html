@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>Edit Reservation Payment</title>
+	<title> Edit Reservation Payment</title>
 </head>
 <body>
 
@@ -13,9 +13,9 @@
   
   	<nav aria-label="breadcrumb" class="margin-20">
 	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a th:href="@{/reservationPayments}">Reservation Payments</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+	    <li class="breadcrumb-item"><a href="#"> Home</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/reservationPayments}"> Reservation Payments</a></li>
+	    <li class="breadcrumb-item active" aria-current="page"> Edit</li>
 	  </ol>
 	</nav>
 	
@@ -42,10 +42,10 @@
 		  </div>
 		  
 		  <div class="col-md-4">
-		    <label for="paymentType" class="form-label">Payment Type</label>
-		    <select class="form-select" th:field="*{paymentType}" required>
+		    <label for="creditCard" class="form-label">Credit Card</label>
+		    <select class="form-select" th:field="*{creditCard}" required>
 		      <option selected disabled value="">Choose...</option>
-		      <option th:each="paymentType : ${paymentTypes}" th:value="${paymentType.id}" th:text="${paymentType.namePaymentType}">...</option>
+		      <option th:each="creditCard : ${creditCards}" th:value="${creditCard.id}" th:text="${creditCard.typeCard}">...</option>
 		    </select>
 		    <div class="invalid-feedback">
 		      Please select a valid state.
