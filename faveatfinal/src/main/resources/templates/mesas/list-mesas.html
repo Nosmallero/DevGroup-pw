@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Lista de Mesas</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
+		<section>
+		<nav aria-label="breadcrumb" class="mt-3 mx-5">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#"> Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page"> Mesas</li>
+	  </ol>
+	</nav>
+			<div class="card text-center margin-20">
+				<div class="card-body">
+
+					<h2 class="h3 mb-4 text-gray-800">Mesas</h2>
+					<div class="card-footer text-muted text-end">
+						<a class="btn"  style="background-color:black; color:white" th:href="@{/mesas/new}" role="button">
+							<i class="fas fa-plus"></i> Nueva Mesa
+						</a>
+					</div>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Tipo de Mesa</th>
+								<th scope="col">Calidad de Mesa</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="mesa : ${mesas}">
+								<th scope="row" th:text=${mesa.tablesId}></th>
+								<td th:text=${mesa.typeTable}></td>
+								<td th:text=${mesa.capacityTable}></td>
+								<td>
+		      	<a class="btn btn-warning" th:href="@{'/mesas/' + ${mesa.tablesId} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/mesas/' + ${mesa.tablesId} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+		
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>
