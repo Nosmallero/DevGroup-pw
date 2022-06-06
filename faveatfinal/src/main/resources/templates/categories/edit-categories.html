@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Edit Categories</title>
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
+	
+	<section class ="section">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/categories}">Categories</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+		  </ol>
+		</nav>
+		
+		<div class="card text-center">
+		  <div class="card-header">
+		    Edit Categories
+		  </div>
+		  <div class="card-body" style="text-align: left;">
+		  
+			<form th:action="@{'/categories/' + ${category.categoryId} + '/update'}" th:object="${category}" method="post" class="row g-3 needs-validation" novalidate>
+			
+			
+				<div class="col-md-3">
+				    <label for="categoryName" class="form-label">categoryName</label>
+				    <input type="text" class="form-control" th:field="*{categoryName}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+				
+				<div class="col-md-3">
+				    <label for="type" class="form-label">type</label>
+				    <input type="text" class="form-control" th:field="*{type}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+				
+			 
+			  <div class="col-12" style="text-align: center;">
+			    <button class="btn btn-warning" type="submit"><i class="fas fa-save"></i> Edit</button>
+			  </div>
+			</form>
+		  
+		  </div>
+		  
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

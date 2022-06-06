@@ -12,6 +12,7 @@ import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "categories", indexes = {@Index(columnList = "name_category", name = "categories_index_name_category")})
 public class Category {
