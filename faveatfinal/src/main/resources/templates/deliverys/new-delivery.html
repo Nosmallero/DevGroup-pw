@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>New Delivery</title>
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+	
+	<section class ="section">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/deliverys}">Delivery</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Create</li>
+		  </ol>
+		</nav>
+	
+		<div class="card text-center">
+		  <div class="card-header">
+		    Delivery
+		  </div>
+		  <div class="card-body" style="text-align: left;">
+			<form th:action="@{/deliverys/savenew}" th:object="${delivery}" method="post" class="row g-3 needs-validation" novalidate>
+				  <div class="col-md-2">
+				    <label for="tip" class="form-label">Tip</label>
+				    <input type="text" class="form-control" th:field="*{tip}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				  </div>
+				  <div class="col-md-4">
+				    <label for="description" class="form-label">Description</label>
+				    <input type="text" class="form-control" th:field="*{description}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				  </div>
+				   <div class="col-md-4">
+				    <label for="dateDelivery" class="form-label">Date of Delivery</label>
+				    <input type="text" class="form-control" th:field="*{dateDelivery}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				  </div>
+				  
+				  
+				  <div class="col-md-3">
+				    <label for="deliveryMan" class="form-label">Delivery Man</label>
+				    <select class="form-select" th:field="*{deliveryMan}" required>
+				      <option value="">Elige un repartidor</option>
+				      <option th:each="deliveryman : ${deliverymans}" th:value="${deliveryman.id}" th:text="${deliveryman.firstName}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+					  
+				  <div class="col-12" style="text-align: center;">
+				    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Create</button>
+				  </div>
+				</form>
+						  
+						  
+						  
+ 		</div>
+		  
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>		  
