@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<main>
+	
+	<section class ="section">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Delivery</li>
+		  </ol>
+		</nav>
+	
+		<div class="card text-center">
+		  <div class="card-header">
+		    Delivery
+		  </div>
+		  <div class="card-body">
+		    
+				<table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">#</th>
+				      <th scope="col">Tip</th>
+				      <th scope="col">Description</th>
+				      <th scope="col">Date of Delivery</th>
+				       <th scope="col">DeliveryMan</th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="delivery : ${deliverys}">
+				      <th scope="row" th:text="${delivery.id}"></th>
+				      <td th:text="${delivery.tip}"></td>
+				      <td th:text="${delivery.description}"></td>
+				      <td th:text="${delivery.dateDelivery}"></td>
+				      <td th:text="${delivery.deliveryMan.firstName}"></td>
+				      
+				      <td>
+				      <a class="btn btn-warning" th:href="@{'/deliverys/' + ${delivery.id} + '/edit'}" role="button"><i class="fas fa-cog"></i></a>
+				      <a class="btn btn-danger" th:href="@{'/deliverys/' + ${delivery.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+						    
+		  </div>
+		  <div class="card-footer text-muted">
+		   <a class="btn btn-danger" th:href="@{/deliverys/new}" role="button"><i class="fas fa-plus-circle"></i></a>
+		  </div>
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>
