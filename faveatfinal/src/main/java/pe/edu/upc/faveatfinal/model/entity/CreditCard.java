@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "creditCard", indexes = {@Index(columnList = "typeCard", name = "creditCard_index_typeCard")})
+
 public class CreditCard {
 	
 	@Id
@@ -35,6 +36,7 @@ public class CreditCard {
 	@OneToMany(mappedBy = "creditCard")
 	private List<ReservationPayment> reservationPayments;
 
+	
 	public CreditCard() {
 		reservationPayments = new ArrayList<>();
 	}
@@ -86,6 +88,5 @@ public class CreditCard {
 	public void setReservationPayments(List<ReservationPayment> reservationPayments) {
 		this.reservationPayments = reservationPayments;
 	}
-	
 }
 	
