@@ -21,6 +21,7 @@ import pe.edu.upc.faveatfinal.model.entity.ReservationPayment;
 @Controller
 @RequestMapping("/reservationPayments")
 @SessionAttributes("{reservationPayment}")
+
 public class ReservationPaymentController {
 
 	@Autowired
@@ -129,5 +130,4 @@ public class ReservationPaymentController {
 		}
 		return "redirect:/reservationPayments";
 	}
-	
 }

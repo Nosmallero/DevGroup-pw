@@ -19,6 +19,7 @@ import pe.edu.upc.faveatfinal.model.entity.CreditCard;
 @Controller
 @RequestMapping("/creditCards")
 @SessionAttributes("{creditCard}")
+
 public class CreditCardController {
 	
 	@Autowired
@@ -124,5 +125,4 @@ public class CreditCardController {
 		}
 		return "redirect:/creditCards";
 	}
-	
 }
