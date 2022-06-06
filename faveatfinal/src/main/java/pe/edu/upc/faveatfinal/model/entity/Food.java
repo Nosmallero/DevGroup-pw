@@ -22,7 +22,7 @@ public class Food {
 	private String foodName;
 	
 	@Column(name = "costs", nullable = false)
-	private float cost;
+	private Float cost;
 	
 	@Column(name = "descriptions", length = 100, nullable = false)
 	private String description;
