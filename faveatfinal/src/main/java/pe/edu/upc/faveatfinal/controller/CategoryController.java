@@ -42,9 +42,9 @@ public class CategoryController {
 	@GetMapping("new")	//	/students/new
 	public String newCategory(Model model) {
 		Category category = new Category();
-		model.addAttribute("student", category);
+		model.addAttribute("category", category);
 		
-		return "category/new-category";
+		return "categories/new-categories";
 	}
 	
 	@GetMapping("{id}/edit")	//	/students/1/edit
@@ -52,17 +52,17 @@ public class CategoryController {
 		try {
 			if (categoryService.existById(id)) {
 				Optional<Category> optional = categoryService.findById(id);
-				model.addAttribute("student", optional.get());
+				model.addAttribute("category", optional.get());
 				
 			} else {
-				return "redirect:/category";
+				return "redirect:/categories";
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "categories/edit-category";
+		return "categories/edit-categories";
 	}
 	
 	@PostMapping("savenew")	//	/students/savenew
@@ -73,7 +73,7 @@ public class CategoryController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/category";
+		return "redirect:/categories";
 	}
 	
 	@GetMapping("{id}/del")	//	/students/1/del
@@ -91,4 +91,23 @@ public class CategoryController {
 		}
 		return "redirect:/categories";
 	}
+	@PostMapping("{id}/update")
+    public String updateCategory(Model model, @ModelAttribute("category") Category category, 
+            @PathVariable("id") Integer id) {
+        try {
+       
+            if (categoryService.existById(id)) {
+            	categoryService.update(category);
+            	
+            } else {
+                return "redirect:/categories";
+            }
+
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "redirect:/categories";
+    }
 }

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Restaurant</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<div th:replace="/layout/layout :: frag-sidebar"></div>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Restaurants</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Restaurant
+	  </div>
+	  <div class="card-body">
+	    
+	    <table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">name_restaurant</th>
+		      <th scope="col">location</th>
+		      <th scope="col">capacity</th>
+		      <th scope="col">phone</th>
+		      <th scope="col">protocol</th>
+		      <th scope="col">serviceStart</th>
+		      <th scope="col">serviceEnd</th>
+		      <th scope="col">qualifications</th>
+		      <th scope="col">categoryId</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="restaurant : ${restaurants}">
+		    
+		      <th scope="row" th:text="${restaurant.restaurantId}">1</th>
+		      <td th:text="${restaurant.name_restaurant}">Mark</td>
+		      <td th:text="${restaurant.location}">Otto</td>
+		      <td th:text="${restaurant.capacity}">@mdo</td>
+		      <td th:text="${restaurant.phone}">@mdo</td>
+		      <td th:text="${restaurant.protocol}">@mdo</td>
+		      <td th:text="${restaurant.serviceStart}">@mdo</td>
+		      <td th:text="${restaurant.serviceEnd}">@mdo</td>
+		      <td th:text="${restaurant.qualification}">@mdo</td>
+		      <th scope="row" th:text="${restaurant.categoryId.categoryId}">1</th>
+		     
+		      <td>
+		      	<a class="btn btn-warning" th:href="@{'/restaurants/' + ${restaurant.restaurantId} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/restaurants/' + ${restaurant.restaurantId} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	    
+	  </div>
+	  <div class="card-footer text-muted">
+	    <a class="btn btn-primary" th:href="@{/restaurants/new}" role="button"> <i class="fas fa-plus"></i> New </a>
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

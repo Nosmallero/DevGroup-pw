@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>New Category</title>
+</head>
+<body>
+
+<header th:insert="layout/layout :: frag-header"></header>
+<div th:replace="/layout/layout :: frag-sidebar"></div>
+<main>
+	
+  <section>
+  
+  	<nav aria-label="breadcrumb" class="margin-20">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">Home</a></li>
+	    <li class="breadcrumb-item"><a th:href="@{/categories}">Categories</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">New</li>
+	  </ol>
+	</nav>
+	
+	<div class="card text-center margin-20">
+	  <div class="card-header">
+	    Categories
+	  </div>
+	  <div class="card-body" style="text-align: left;">
+	  	
+	  	<form th:action="@{/categories/savenew}" th:object="${category}" method="post" class="row g-3 needs-validation" novalidate>
+		  <div class="col-md-3">
+		    <label for="categoryName" class="form-label">categoryName</label>
+		    <input type="text" class="form-control" th:field="*{categoryName}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  <div class="col-md-3">
+		    <label for="type" class="form-label">type</label>
+		    <input type="text" class="form-control" th:field="*{type}" required>
+		    <div class="valid-feedback">
+		      Looks good!
+		    </div>
+		  </div>
+		  
+		  <div class="col-12" style="text-align: center;">
+		    <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save</button>
+		  </div>
+		</form>
+	  
+	  </div>
+	  <div class="card-footer text-muted">
+
+	  </div>
+	</div>
+  </section>
+
+</main>
+<footer th:replace="layout/layout :: frag-footer"></footer>	
+
+</body>
+</html>

@@ -1,7 +1,5 @@
 package pe.edu.upc.faveatfinal.model.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+
 
 @Entity
 @Table(name = "restaurants")
@@ -42,13 +39,12 @@ public class Restaurant {
 	@Column(name = "protocols", length = 200, nullable = false)
 	private String protocol;
 
-	@Column(name = "start_time")
-	@Temporal(TemporalType.TIME)
-	private Date serviceStart;
+	@Column(name = "start_time", length = 50, nullable = false)
+	private String serviceStart;
 	
-	@Column(name = "end_time")
-	@Temporal(TemporalType.TIME)
-	private Date serviceEnd;
+	@Column(name = "end_time", length = 50, nullable = false)
+	private String serviceEnd;
+	
 	
 	@Min(1)
 	@Max(5)
@@ -63,6 +59,16 @@ public class Restaurant {
 
 	public void setRestaurantId(Integer restaurantId) {
 		this.restaurantId = restaurantId;
+	}
+
+
+	public Category getCategoryId() {
+		return categoryId;
+	}
+
+
+	public void setCategoryId(Category categoryId) {
+		this.categoryId = categoryId;
 	}
 
 
@@ -116,22 +122,22 @@ public class Restaurant {
 	}
 
 
-	public Date getServiceStart() {
+	public String getServiceStart() {
 		return serviceStart;
 	}
 
 
-	public void setServiceStart(Date serviceStart) {
+	public void setServiceStart(String serviceStart) {
 		this.serviceStart = serviceStart;
 	}
 
 
-	public Date getServiceEnd() {
+	public String getServiceEnd() {
 		return serviceEnd;
 	}
 
 
-	public void setServiceEnd(Date serviceEnd) {
+	public void setServiceEnd(String serviceEnd) {
 		this.serviceEnd = serviceEnd;
 	}
 
@@ -144,17 +150,6 @@ public class Restaurant {
 	public void setQualification(Integer qualification) {
 		this.qualification = qualification;
 	}
-
-
-	public Category getCategoryId() {
-		return categoryId;
-	}
-
-
-	public void setCategoryId(Category categoryId) {
-		this.categoryId = categoryId;
-	}
-
 
 }
 

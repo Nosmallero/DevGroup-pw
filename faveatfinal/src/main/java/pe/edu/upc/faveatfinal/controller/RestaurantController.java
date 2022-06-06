@@ -55,7 +55,7 @@ public class RestaurantController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "restaurants/new-restaurant";
+		return "restaurants/new-restaurants";
 	}
 	
 	@PostMapping("savenew")	//	/students/savenew
@@ -74,7 +74,7 @@ public class RestaurantController {
 		try {
 			if (restaurantService.existById(id)) {
 				Optional<Restaurant> optional = restaurantService.findById(id);
-				model.addAttribute("student", optional.get());
+				model.addAttribute("restaurant", optional.get());
 				List<Category> categories = categoryService.getAll();
 				model.addAttribute("categories", categories);
 			} else {
@@ -85,7 +85,7 @@ public class RestaurantController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "restaurants/edit-restaurant";
+		return "restaurants/edit-restaurants";
 	}
 	
 	@PostMapping("{id}/update")	//	/students/1/update
