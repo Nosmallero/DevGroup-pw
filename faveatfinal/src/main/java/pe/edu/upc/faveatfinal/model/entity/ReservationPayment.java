@@ -16,6 +16,7 @@ import javax.persistence.Table;
 	indexes = {@Index(columnList = "id, nameReservation", name = "reservationPayment_index_id_nameReservation")})
 
 public class ReservationPayment {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -29,6 +30,7 @@ public class ReservationPayment {
 	@ManyToOne
 	@JoinColumn(name = "creditCard_id")
 	private CreditCard creditCard;
+	
 
 	public Integer getId() {
 		return id;
@@ -61,5 +63,4 @@ public class ReservationPayment {
 	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
-
 }
