@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Lista de Ordernes</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
+
+		<section>
+
+			<nav aria-label="breadcrumb" class="mt-2 mx-3">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/orders}">Orders</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Edit</li>
+					<li class="breadcrumb-item active" aria-current="page">Orders</li>
+				</ol>
+			</nav>
+
+			<div class="card text-center margin-20">
+				<div class="card-header"></div>
+				<div class="card-body" style="text-align: left;">
+
+					<form th:action="@{'/orders/' + ${order.id} + '/update'}"
+						th:object="${order}" method="post" class="row g-3 needs-validation"
+						novalidate>
+						<div class="col-md-4">
+							<label for="restaurant" class="form-label">Restaurant</label> <select
+								class="form-select" th:field="*{restaurant}" required>
+								<option selected disabled value="">Choose...</option>
+								<option th:each="restaurant : ${restaurants}"
+									th:value="${restaurant.restaurantId}"
+									th:text="${restaurant.name_restaurant}">...</option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<label for="customer" class="form-label">Customer</label> <select
+								class="form-select" th:field="*{customer}" required>
+								<option selected disabled value="">Choose...</option>
+								<option th:each="customer : ${customers}"
+									th:value="${customer.id}" th:text="${customer.lastName}">...</option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
+						</div>
+
+
+
+						<div class="col-md-4">
+							<label for="dateOrder" class="form-label">Date of order</label> <input
+								type="text" class="form-control" th:field="*{dateOrder}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-md-4">
+							<label for="description" class="form-label">Description</label> <input
+								type="text" class="form-control" th:field="*{description}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						<div class="col-12" style="text-align: center;">
+							<button class="btn" style="background-color: black; color: white"
+								type="submit">
+								<i class="fas fa-save"></i> Update
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

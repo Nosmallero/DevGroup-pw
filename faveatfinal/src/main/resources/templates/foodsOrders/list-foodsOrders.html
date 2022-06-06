@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Lista de Comidas por Órdenes</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
+		<section>
+			<nav aria-label="breadcrumb" class="mt-3 mx-5">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#"> Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Foods Orders</li>
+				</ol>
+			</nav>
+			<div class="card  text-center margin-20">
+				<div class="card-body">
+
+					<h2 class="h3 mb-4 text-gray-800">Foods Orders</h2>
+					<div class="card-footer text-muted text-end">
+						<a class="btn" style="background-color: black; color: white"
+							th:href="@{/foodsOrders/new}" role="button"> <i
+							class="fas fa-plus"></i> New Foods Order
+						</a>
+					</div>
+					<table class="table table-striped text-center">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Food</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Cost Total</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="foodOrder : ${foodsOrder}">
+								<th scope="row" th:text="${foodOrder.id}"></th>
+								<td th:text="${foodOrder.food.foodId}"></td>
+								<td th:text="${foodOrder.order.id}"></td>
+								<td th:text="${foodOrder.quantityFood}"></td>
+								<td th:text="${foodOrder.costTotal}"></td>
+
+								<td><a class="btn btn-warning"
+									th:href="@{'/foodsOrders/' + ${foodOrder.id} + '/edit'}" role="button"><i
+										class="fas fa-cog"></i></a> <a class="btn btn-danger"
+									th:href="@{'/foodsOrders/' + ${foodOrder.id} + '/delete'}" role="button"><i
+										class="fas fa-trash"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</section>
+		
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

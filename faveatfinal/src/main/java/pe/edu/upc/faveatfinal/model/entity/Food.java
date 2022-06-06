@@ -1,5 +1,7 @@
 package pe.edu.upc.faveatfinal.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +33,9 @@ public class Food {
 	@ManyToOne
 	@JoinColumn(name = "menu_restaurant_id")
 	private MenuRestaurant menuRestaurant;
+	
+	@OneToMany(mappedBy = "food")
+	private List<FoodsOrder> foodsOrder;
 
 	public Integer getFoodId() {
 		return foodId;
@@ -71,6 +77,14 @@ public class Food {
 		this.menuRestaurant = menuRestaurant;
 	}
 
-	
+
+	public List<FoodsOrder> getFoodsOrder() {
+		return foodsOrder;
+	}
+
+	public void setFoodsOrder(List<FoodsOrder> foodsOrder) {
+		this.foodsOrder = foodsOrder;
+	}
+
 
 }
