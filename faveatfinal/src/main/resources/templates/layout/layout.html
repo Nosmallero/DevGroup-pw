@@ -133,6 +133,22 @@ body {
 								style="color: white">Delivery</a></li>
 							<li><a th:href="@{/deliverymans}" class="link-dark rounded"
 								style="color: white">Delivery Man</a></li>
+							</ul>
+						</div>
+					</div>
+					<div>
+					<button style="color: white"
+						class="btn btn-toggle align-items-center rounded collapsed"
+						data-bs-toggle="collapse" data-bs-target="#reservationPayment-collapse"
+						aria-expanded="false">
+						<i class="fa-solid fa-angle-down me-1"></i> Reservation
+					</button>
+					<div class="collapse" id="reservationPayment-collapse">
+						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							<li><a th:href="@{/reservationPayments-bs}" class="link-dark rounded"
+								style="color: white">ReservationPayment</a></li>
+							<li><a th:href="@{/creditCards-bs}" class="link-dark rounded"
+								style="color: white">Credit Card</a></li>
 						</ul>
 					</div>
 				</div>
