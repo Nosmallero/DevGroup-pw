@@ -40,13 +40,14 @@
 								<td th:text="${reservationPayment.nameReservation}">Mark</td>
 								<td th:text="${reservationPayment.paymentAmount}">Otto</td>
 								<td th:text="${reservationPayment.creditCard.typeCard}">@mdo</td>
-								<td><a class="btn btn-warning"
+								<td>
+								<a class="btn btn-warning"
 									th:href="@{'/reservationPayments/' + ${reservationPayment.id} + '/edit'}"
 									role="button"> <i class="fas fa-edit"></i>
 								</a> <a class="btn btn-danger"
 									th:href="@{'/reservationPayments/' + ${reservationPayment.id} + '/del'}"
-									role="button"> <i class="fas fa-trash-alt"></i>
-								</a></td>
+									role="button"> <i class="fas fa-trash-alt"></i> </a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
