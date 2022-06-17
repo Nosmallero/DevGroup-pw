@@ -36,7 +36,6 @@ public class ReservationPaymentController {
 			List<ReservationPayment> reservationPayments = reservationPaymentService.getAll();
 			model.addAttribute("reservationPayments", reservationPayments);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -53,7 +52,6 @@ public class ReservationPaymentController {
 			model.addAttribute("creditCards", creditCards);
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "reservationPayments/new-reservationPayment";
@@ -65,7 +63,6 @@ public class ReservationPaymentController {
 		try {
 			ReservationPayment reservationPaymentSaved = reservationPaymentService.create(reservationPayment);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "redirect:/reservationPayments";
@@ -87,7 +84,6 @@ public class ReservationPaymentController {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "reservationPayments/edit-reservationPayment";
@@ -106,7 +102,6 @@ public class ReservationPaymentController {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "redirect:/reservationPayments";
@@ -124,7 +119,6 @@ public class ReservationPaymentController {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "redirect:/reservationPayments";
