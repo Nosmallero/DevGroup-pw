@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/layout/layout :: frag-head">
 <meta charset="ISO-8859-1">
-<title>Editar Mesas</title>
+<title>Editar Reservación</title>
 </head>
 <body>
 	<header th:replace="/layout/layout :: frag-header"></header>
@@ -14,9 +14,9 @@
 			<nav aria-label="breadcrumb" class="mt-2 mx-3">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<li class="breadcrumb-item"><a th:href="@{/mesas}">Menus</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/reservations}">Reservaciones</a></li>
 					<li class="breadcrumb-item active" aria-current="page">Edit</li>
-					<li class="breadcrumb-item active" aria-current="page">Menus</li>
+					<li class="breadcrumb-item active" aria-current="page">Reservaciones</li>
 				</ol>
 			</nav>
 
@@ -24,17 +24,17 @@
 				<div class="card-header"></div>
 				<div class="card-body" style="text-align: left;">
 
-					<form th:action="@{'/mesas/' + ${mesa.tablesId} + '/update'}"
-						th:object="${mesa}" method="post"
+					<form th:action="@{'/reservations/' + ${reservation.reservationId} + '/update'}"
+						th:object="${reservation}" method="post"
 						class="row g-3 needs-validation" novalidate>
 						<div class="col-md-3">
-							<label for="typeTable" class="form-label">Type</label> <input
-								type="text" class="form-control" th:field="*{typeTable}" required>
+							<label for="typeReservation" class="form-label">Type</label> <input
+								type="text" class="form-control" th:field="*{typeReservation}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 						<div class="col-md-3">
-							<label for="capacityTable" class="form-label">Description</label> <input
-								type="text" class="form-control" th:field="*{capacityTable}"
+							<label for="dateStartReservation" class="form-label">Description</label> <input
+								type="text" class="form-control" th:field="*{dateStartReservation}"
 								required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
