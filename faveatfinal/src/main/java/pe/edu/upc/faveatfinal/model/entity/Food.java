@@ -14,18 +14,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "foods", indexes = {@Index(columnList = "food_name", name = "foods_index_food_name")})
+@Table(name = "foods", indexes = {@Index(columnList = "name", name = "foods_index_name")})
 public class Food {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "food_id")
-	private Integer foodId;
+	private Integer id;
 
-	@Column(name = "food_name",length = 40, nullable = false)
-	private String foodName;
+	@Column(name = "name",length = 40, nullable = false)
+	private String name;
 	
 	@Column(name = "costs", nullable = false)
-	private Float cost;
+	private float cost;
+	
+	@Column(name = "stocks", nullable = false)
+	private int stock;
 	
 	@Column(name = "descriptions", length = 100, nullable = false)
 	private String description;
@@ -34,31 +36,42 @@ public class Food {
 	@JoinColumn(name = "menu_restaurant_id")
 	private MenuRestaurant menuRestaurant;
 	
+	@Column(name = "images")
+	private String image;
+	
 	@OneToMany(mappedBy = "food")
 	private List<FoodsOrder> foodsOrder;
 
-	public Integer getFoodId() {
-		return foodId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setFoodId(Integer foodId) {
-		this.foodId = foodId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getFoodName() {
-		return foodName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFoodName(String foodName) {
-		this.foodName = foodName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Float getCost() {
+	public float getCost() {
 		return cost;
 	}
 
-	public void setCost(Float cost) {
+	public void setCost(float cost) {
 		this.cost = cost;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 	public String getDescription() {
@@ -77,6 +90,13 @@ public class Food {
 		this.menuRestaurant = menuRestaurant;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public List<FoodsOrder> getFoodsOrder() {
 		return foodsOrder;
@@ -86,5 +106,6 @@ public class Food {
 		this.foodsOrder = foodsOrder;
 	}
 
+	
 
 }

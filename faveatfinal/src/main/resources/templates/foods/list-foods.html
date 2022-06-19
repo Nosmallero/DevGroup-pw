@@ -37,16 +37,16 @@
 						</thead>
 						<tbody>
 							<tr th:each="food : ${foods}">
-								<th scope="row" th:text=${food.foodId}></th>
+								<th scope="row" th:text=${food.id}></th>
 								<td th:text=${food.menuRestaurant.type}></td>
-								<td th:text=${food.foodName}></td>
+								<td th:text=${food.name}></td>
 								<td th:text=${food.description}></td>
 								<td th:text=${food.cost}></td>
 								<td><a class="btn btn-warning"
-									th:href="@{'/foods/' + ${food.foodId} + '/edit'}" role="button">
+									th:href="@{'/foods/' + ${food.id} + '/edit'}" role="button">
 										<i class="fas fa-edit"></i>
 								</a> <a class="btn btn-danger"
-									th:href="@{'/foods/' + ${food.foodId} + '/del'}" role="button">
+									th:href="@{'/foods/' + ${food.id} + '/del'}" role="button">
 										<i class="fas fa-trash-alt"></i>
 								</a></td>
 							</tr>
@@ -62,12 +62,13 @@
 				<div class="card mb-3 mx-5 mt-5 mb-5 col-6"
 					style="max-width: 540px;" th:each="food : ${foods}">
 					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="..." class="img-fluid rounded-start" alt="...">
+						<div class="col row align-items-center">
+							<img th:src="${food.image}" class="img-fluid rounded-start ms-0"
+								width="100%">
 						</div>
 						<div class="col-md-8" style="width: 18rem;">
 							<div class="card-body">
-								<h5 class="card-title" th:text=${food.foodName}></h5>
+								<h5 class="card-title" th:text=${food.name}></h5>
 								<p class="card-text text-end">
 									<small class="text-muted">S/.</small> <small class="text-muted"
 										th:text=${food.cost}></small>

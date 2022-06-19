@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.faveatfinal.business.crud.CategoryService;
+import pe.edu.upc.faveatfinal.business.crud.FoodService;
+import pe.edu.upc.faveatfinal.business.crud.MenuRestaurantService;
 import pe.edu.upc.faveatfinal.business.crud.RestaurantService;
 import pe.edu.upc.faveatfinal.model.entity.Category;
+import pe.edu.upc.faveatfinal.model.entity.Food;
+import pe.edu.upc.faveatfinal.model.entity.MenuRestaurant;
 import pe.edu.upc.faveatfinal.model.entity.Restaurant;
 
 
@@ -29,6 +33,12 @@ public class RestaurantController {
 	
 	@Autowired
 	private CategoryService categoryService; 
+
+	@Autowired
+	private MenuRestaurantService menuRestaurantService; 
+	
+	@Autowired
+	private FoodService foodService; 
 
 	@GetMapping		//	/students
 	public String listRestaurant(Model model) {
@@ -68,6 +78,28 @@ public class RestaurantController {
 		}
 		return "redirect:/restaurants";
 	}
+	
+	@GetMapping("{id}/select_menu")
+	public String selectSection(Model model, @PathVariable("id") Integer id) {
+		try {
+			if (restaurantService.existById(id)) {
+				Optional<Restaurant> optional = restaurantService.findById(id);
+				model.addAttribute("restaurant", optional.get());
+				List<MenuRestaurant> menuRestaurants = menuRestaurantService.getAll();
+				model.addAttribute("menuRestaurants", menuRestaurants);
+				List<Food> foods = foodService.getAll();
+				model.addAttribute("foods", foods);
+			} else {
+				return "redirect:/restaurants";
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "restaurants/menu-restaurant-select";
+	}
+	
 	
 	@GetMapping("{id}/edit")	//	/students/1/edit
 	public String editRestaurant(Model model, @PathVariable("id") Integer id) {				

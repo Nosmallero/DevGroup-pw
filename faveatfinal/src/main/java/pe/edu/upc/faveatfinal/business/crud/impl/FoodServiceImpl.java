@@ -22,8 +22,8 @@ public class FoodServiceImpl implements FoodService{
 	}
 
 	@Override
-	public List<Food> findByfoodName(String foodName) throws Exception {
-		return this.foodRepository.findByfoodName(foodName);
+	public List<Food> findByName(String name) throws Exception {
+		return this.foodRepository.findByName(name);
 		}
 
 }

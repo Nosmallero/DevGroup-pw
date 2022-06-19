@@ -33,8 +33,8 @@
 								class="form-select" th:field="*{food}" required>
 								<option selected disabled value="">Choose...</option>
 								<option th:each="food : ${foods}"
-									th:value="${food.foodId}"
-									th:text="${food.foodName}">...</option>
+									th:value="${food.id}"
+									th:text="${food.name}">...</option>
 							</select>
 							<div class="invalid-feedback">Please select a valid state.
 							</div>

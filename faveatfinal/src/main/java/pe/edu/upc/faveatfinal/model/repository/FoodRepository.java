@@ -9,6 +9,6 @@ import pe.edu.upc.faveatfinal.model.entity.Food;
 
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Integer>{
-	List<Food> findByfoodName(String foodName) throws Exception;
+	List<Food> findByName(String name) throws Exception;
 
 }

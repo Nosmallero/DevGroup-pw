@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,6 +32,10 @@ public class MenuRestaurant {
 	
 	@OneToMany(mappedBy = "menuRestaurant")
 	private List<Food> foods;
+	
+	@ManyToOne
+	@JoinColumn(name = "restaurant_id")
+	private Restaurant restaurant;
 	
 	public MenuRestaurant() {
 		foods = new ArrayList<>();
@@ -66,4 +72,14 @@ public class MenuRestaurant {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+	
+	
 }

@@ -9,7 +9,7 @@
 	<div th:replace="/layout/layout :: frag-sidebar"></div>
 	<main>
 
-		<section>
+	<section>
 
 			<nav aria-label="breadcrumb" class="mt-2 mx-3">
 				<ol class="breadcrumb">
@@ -26,36 +26,42 @@
 					<form th:action="@{/foods/savenew}" th:object="${food}"
 						method="post" class="row g-3 needs-validation" novalidate>
 						<div class="col-md-3">
-							<label for="foodName" class="form-label">Food name</label> <input
-								type="text" class="form-control" th:field="*{foodName}" required>
+							<label for="name" class="form-label">Food name</label> <input
+								type="text" class="form-control" th:field="*{name}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 						<div class="col-md-3">
 							<label for="cost" class="form-label">Price</label> <input
-								type="text" class="form-control" th:field="*{cost}"
-								required>
+								type="text" class="form-control" th:field="*{cost}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 
 						<div class="col-md-2">
 							<label for="description" class="form-label">Description</label> <input
-								 class="form-control" th:field="*{description}" required>
+								class="form-control" th:field="*{description}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 
 						<div class="col-md-4">
+							<label for="image" class="form-label">Image</label>
+							<input type="text" class="form-control" th:field="*{image}" required>
+						</div>
+						
+						<div class="col-md-4">
 							<label for="menuRestaurant" class="form-label">Menu</label> <select
 								class="form-select" th:field="*{menuRestaurant}" required>
 								<option selected disabled value="">Choose...</option>
-								<option th:each="menuRestaurant : ${menuRestaurants}" th:value="${menuRestaurant.id}"
+								<option th:each="menuRestaurant : ${menuRestaurants}"
+									th:value="${menuRestaurant.id}"
 									th:text="${menuRestaurant.type}">...</option>
 							</select>
 							<div class="invalid-feedback">Please select a valid state.
 							</div>
 						</div>
-
+						
 						<div class="col-12" style="text-align: center;">
-							<button class="btn" style="background-color:black; color:white" type="submit">
+							<button class="btn" style="background-color: black; color: white"
+								type="submit">
 								<i class="fas fa-save"></i> Save
 							</button>
 						</div>
@@ -65,6 +71,7 @@
 				<div class="card-footer text-muted"></div>
 			</div>
 		</section>
+
 
 	</main>
 	<footer th:replace="layout/layout :: frag-footer"></footer>
