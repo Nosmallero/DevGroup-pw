@@ -36,13 +36,13 @@
 		  </thead>
 		  <tbody>
 		    <tr th:each="category : ${categories}">
-			  <th scope="row" th:text="${category.categoryId}">1</th>
+			  <th scope="row" th:text="${category.id}">1</th>
 		      <td th:text="${category.categoryName}">Mark</td>
 		      <td th:text="${category.type}">Otto</td>
 		
 		      <td>
-		      	<a class="btn btn-warning" th:href="@{'/categories/' + ${category.categoryId} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" th:href="@{'/categories/' + ${category.categoryId} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
+		      	<a class="btn btn-warning" th:href="@{'/categories/' + ${category.id} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
+		      	<a class="btn btn-danger" th:href="@{'/categories/' + ${category.id} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
 		      </td>
 		    </tr>
 		  </tbody>

@@ -1,120 +1,112 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
-	<meta charset="ISO-8859-1">
-	<title>New Restaurant</title>
+<meta charset="ISO-8859-1">
+<title>New Restaurant</title>
 </head>
 <body>
 
-<header th:insert="layout/layout :: frag-header"></header>
-<div th:replace="/layout/layout :: frag-sidebar"></div>
-<main>
-	
-  <section>
-  
-  	<nav aria-label="breadcrumb" class="margin-20">
-	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a th:href="@{/restaurants}">Restaurant</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">New</li>
-	  </ol>
-	</nav>
-	
-	<div class="card text-center margin-20">
-	  <div class="card-header">
-	    Restaurant
-	  </div>
-	  <div class="card-body" style="text-align: left;">
-	  	
-	  	<form th:action="@{/restaurants/savenew}" th:object="${restaurant}" method="post" class="row g-3 needs-validation" novalidate>
-		  <div class="col-md-3">
-		    <label for="name_restaurant" class="form-label">name_restaurants</label>
-		    <input type="text" class="form-control" th:field="*{name_restaurant}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  <div class="col-md-3">
-		    <label for="location" class="form-label">locations</label>
-		    <input type="text" class="form-control" th:field="*{location}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
-		  <div class="col-md-2">
-		    <label for="capacity" class="form-label">capacities</label>
-		    <input type="number" class="form-control" th:field="*{capacity}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
-		   <div class="col-md-2">
-		    <label for="phone" class="form-label">phones</label>
-		    <input type="text" class="form-control" th:field="*{phone}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
-		  <div class="col-md-2">
-		    <label for="serviceStart" class="form-label">start_time</label>
-		    <input type="text" class="form-control" th:field="*{serviceStart}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
-		  <div class="col-md-2">
-		    <label for="serviceEnd" class="form-label">end_time</label>
-		    <input type="text" class="form-control" th:field="*{serviceEnd}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
-		  <div class="col-md-4">
-		    <label for="categoryId" class="form-label">categories</label>
-		    <select class="form-select" th:field="*{categoryId}" required>
-		      <option selected disabled value="">Choose...</option>
-		      <option th:each="categoryId : ${categories}" th:value="${categoryId.categoryId}" th:text="${categoryId.categoryName}">...</option>
-		    </select>
-		    <div class="invalid-feedback">
-		      Please select a valid state.
-		    </div>
-		  </div>
-		  
-		   <div class="col-md-3">
-		    <label for="protocols" class="form-label">protocols</label>
-		    <input type="text" class="form-control" th:field="*{protocol}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
-		   <div class="col-md-3">
-		    <label for="qualification" class="form-label">qualifications</label>
-		    <input type="text" class="form-control" th:field="*{qualification}" required>
-		    <div class="valid-feedback">
-		      Looks good!
-		    </div>
-		  </div>
-		  
-		  <div class="col-12" style="text-align: center;">
-		    <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save</button>
-		  </div>
-		</form>
-	  
-	  </div>
-	  <div class="card-footer text-muted">
+	<header th:insert="layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
 
-	  </div>
-	</div>
-  </section>
+		<section>
 
-</main>
-<footer th:replace="layout/layout :: frag-footer"></footer>	
+			<nav aria-label="breadcrumb" class="margin-20">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/restaurants}">Restaurant</a></li>
+					<li class="breadcrumb-item active" aria-current="page">New</li>
+				</ol>
+			</nav>
+
+			<div class="card text-center margin-20">
+				<div class="card-header">Restaurant</div>
+				<div class="card-body" style="text-align: left;">
+
+					<form th:action="@{/restaurants/savenew}" th:object="${restaurant}"
+						method="post" class="row g-3 needs-validation" novalidate>
+						<div class="col-md-3">
+							<label for="name_restaurant" class="form-label">name_restaurants</label>
+							<input type="text" class="form-control"
+								th:field="*{name_restaurant}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						<div class="col-md-3">
+							<label for="location" class="form-label">locations</label> <input
+								type="text" class="form-control" th:field="*{location}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-md-2">
+							<label for="capacity" class="form-label">capacities</label> <input
+								type="number" class="form-control" th:field="*{capacity}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-md-2">
+							<label for="phone" class="form-label">phones</label> <input
+								type="text" class="form-control" th:field="*{phone}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-md-2">
+							<label for="serviceStart" class="form-label">start_time</label> <input
+								type="text" class="form-control" th:field="*{serviceStart}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-md-2">
+							<label for="serviceEnd" class="form-label">end_time</label> <input
+								type="text" class="form-control" th:field="*{serviceEnd}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-md-4">
+							<label for="categoryId" class="form-label">categories</label> <select
+								class="form-select" th:field="*{categoryId}" required>
+								<option selected disabled value="">Choose...</option>
+								<option th:each="categoryId : ${categories}"
+									th:value="${categoryId.id}"
+									th:text="${categoryId.categoryName}">...</option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<label for="protocols" class="form-label">protocols</label> <input
+								type="text" class="form-control" th:field="*{protocol}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						<div class="col-md-4">
+							<label for="image" class="form-label">Image</label> <input
+								type="text" class="form-control" th:field="*{image}" required>
+						</div>
+						<div class="col-md-3">
+							<label for="qualification" class="form-label">qualifications</label>
+							<input type="text" class="form-control"
+								th:field="*{qualification}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+						<div class="col-12" style="text-align: center;">
+							<button class="btn btn-success" type="submit">
+								<i class="fas fa-save"></i> Save
+							</button>
+						</div>
+					</form>
+
+				</div>
+				<div class="card-footer text-muted"></div>
+			</div>
+		</section>
+
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
 
 </body>
 </html>

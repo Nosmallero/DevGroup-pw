@@ -19,7 +19,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
-	private Integer categoryId;
+	private Integer id;
 
 	@OneToMany(mappedBy = "categoryId")
 	private List<Restaurant>restaurants;
@@ -30,12 +30,13 @@ public class Category {
 	@Column(name = "type", length = 30, nullable = false)
 	private String type;
 
-	public Integer getCategoryId() {
-		return categoryId;
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Category() {

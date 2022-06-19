@@ -38,7 +38,7 @@
 						<tbody>
 							<tr th:each="foodOrder : ${foodsOrder}">
 								<th scope="row" th:text="${foodOrder.id}"></th>
-								<td th:text="${foodOrder.food.foodId}"></td>
+								<td th:text="${foodOrder.food.id}"></td>
 								<td th:text="${foodOrder.order.id}"></td>
 								<td th:text="${foodOrder.quantityFood}"></td>
 								<td th:text="${foodOrder.costTotal}"></td>
