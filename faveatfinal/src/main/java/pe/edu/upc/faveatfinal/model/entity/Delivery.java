@@ -1,6 +1,7 @@
 package pe.edu.upc.faveatfinal.model.entity;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,10 @@ public class Delivery {
 	@ManyToOne
 	@JoinColumn(name = "deliveryMan_id")
 	private DeliveryMan deliveryMan;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "food_id")
+	private Food food;
 
 	public Integer getId() {
 		return id;
@@ -71,6 +76,13 @@ public class Delivery {
 	}
 
 	
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
+	}
 	
 	
 	

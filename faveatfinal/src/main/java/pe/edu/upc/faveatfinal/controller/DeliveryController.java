@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.faveatfinal.business.crud.DeliveryManService;
 import pe.edu.upc.faveatfinal.business.crud.DeliveryService;
-
+import pe.edu.upc.faveatfinal.business.crud.FoodService;
 import pe.edu.upc.faveatfinal.model.entity.Delivery;
 import pe.edu.upc.faveatfinal.model.entity.DeliveryMan;
+import pe.edu.upc.faveatfinal.model.entity.Food;
 
 
 
@@ -31,6 +32,9 @@ public class DeliveryController {
 	
 	@Autowired
 	private DeliveryManService deliveryManService;
+	
+	@Autowired
+	private FoodService foodService;
 	
 	@GetMapping
 	public String listDelivery(Model model) {
@@ -52,6 +56,8 @@ public class DeliveryController {
 		try {
 			List<DeliveryMan> deliverymans = deliveryManService.getAll();
 			model.addAttribute("deliverymans", deliverymans);
+			List<Food> foods = foodService.getAll();
+			model.addAttribute("foods", foods);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

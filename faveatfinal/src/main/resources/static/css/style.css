@@ -1,10 +1,16 @@
-.section{
-	margin : 40px;
+.container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 }
-.margin-b-20 {
-	margin-bottom: 20px;
+.container-card{
+	display: flex;
+
+	height: auto;
 }
-.margin-b-10 {
-	margin-bottom: 10px;
-	text-align: left;
+
+.header-deliveryman, .photo-deliveryman{
+	padding: 20px;
+	text-align: center;
 }
