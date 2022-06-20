@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Platos de Comida</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
+		<section>
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="card mb-3 mt-5 mb-5 col-6" style="max-width: 540px;"
+						th:each="food : ${foods}">
+						<div class="row g-0">
+							<div class="col row align-items-center">
+								<img th:src="${food.image}" class="img-fluid rounded-start ms-0"
+									width="100%">
+							</div>
+							<div class="col-md-8" style="width: 18rem;">
+								<div class="card-body">
+								<h5 class="card-title" th:text=${food.name}></h5>
+								<p class="card-text text-start">
+									<small class="text-muted">Stock:</small> <small
+										class="text-muted" th:text=${food.stock}></small>
+								</p>
+								<p class="card-text text-end">
+									<small class="text-muted">S/.</small> <small class="text-muted"
+										th:text=${food.cost}></small>
+								</p>
+								<p class="card-text" th:text=${food.description}></p>
+								<a class="btn" th:href="@{/foods}"
+									style="background-color: #130d21; color: white; text-decoration: none"><i
+									class="fa-solid fa-plus"></i> Anadir al Carrito</a>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

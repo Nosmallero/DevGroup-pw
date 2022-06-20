@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout/layout :: frag-head">
+<head th:fragment="frag-head">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
@@ -38,9 +38,126 @@ body {
 </style>
 </head>
 <body>
+	<header th:fragment="frag-header">
+		<nav class="navbar navbar-expand-lg border-bottom position-relative"
+			style="background-color: #130d21">
+			<div class="container-fluid">
+				<a class="nav-link btn"> <i class="fas fa-bars"
+					id="sidebarToggle" style="color: white"></i></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="d-flex justify-content-center logo-container fs-2">
+					<a href="/" class=""
+						style="font-family: 'Caveat Brush', cursive; color: white; text-decoration: none">
+						<img class="logo-sidebar" th:src="@{/img/LogoOficial.png}"
+						width="50em" height="50em" alt="" /> FavEat
+					</a>
+				</div>
+				<div
+					class="align-items-center position-absolute top-2 start-50 translate-middle-x">
 
-	<header th:replace="/layout/layout :: frag-header"></header>
-	<div th:replace="/layout/layout :: frag-sidebar"></div>
+					<form class="d-flex" th:action="@{/find_food}" method="post"
+						th:object="${food}">
+						<input type="text" class="form-control me-2" th:field="*{name}"
+							id="cat" placeholder="Search" aria-label="Search">
+						<button class="btn" style="background-color: #EA3C3C"
+							type="submit">
+							<i class="fas fa-search" style="color: white"></i>
+						</button>
+					</form>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="navbar-nav ms-auto mt-2 mt-lg-15">
+						<button type="button" class="btn btn-light text-dark me-2">Ingresar</button>
+						<button type="button" class="btn"
+							style="background-color: #EA3C3C; color: white">Registrarse</button>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div id="wrapper" class="position-fixed" th:fragment="frag-sidebar">
+		<div id="sidebar-wrapper" style="background-color: #130d21">
+			<div class="d-flex justify-content-end pt-4 pe-4">
+				<a class="btn"> <i class="fa-solid fa-xmark" id="sidebarToggled"
+					style="color: white"></i></a>
+			</div>
+			<div class="list-group list-group-flush text-left p-5">
+				<a class="list-group-item list-group-item-action p-3"
+					th:href="@{/restaurants}"
+					style="background-color: #130d21; color: white"><i
+					class="fa-solid fa-utensils"></i> Restaurantes</a> <a
+					class="list-group-item list-group-item-action  p-3" href="#!"
+					style="background-color: #130d21; color: white"><i
+					class="fa-solid fa-bag-shopping"></i> Mis Pedidos</a> <a
+					class="list-group-item list-group-item-action p-3" href="#!"
+					style="background-color: #130d21; color: white"><i
+					class="fa-solid fa-cart-shopping"></i> Carrito</a> <a
+					class="list-group-item list-group-item-action  p-3" href="#!"
+					style="background-color: #130d21; color: white"><i
+					class="fa-solid fa-building"></i> Mi Restaurante</a> <a
+					class="list-group-item list-group-item-action p-3" href="#!"
+					style="background-color: #130d21; color: white"><i
+					class="fa-solid fa-headset"></i> Soporte</a>
+
+				<hr style="color: white">
+				<div>
+					<button style="color: white"
+						class="btn btn-toggle align-items-center rounded collapsed"
+						data-bs-toggle="collapse" data-bs-target="#restaurant-collapse"
+						aria-expanded="false">
+						<i class="fa-solid fa-angle-down me-1"></i> Restaurants
+					</button>
+					<div class="collapse" id="restaurant-collapse">
+						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							<li><a th:href="@{/menus}" class="link-dark rounded"
+								style="color: white">MenuRestaurant</a></li>
+							<li><a th:href="@{/foods}" class="link-dark rounded"
+								style="color: white">Foods</a></li>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<button style="color: white"
+						class="btn btn-toggle align-items-center rounded collapsed"
+						data-bs-toggle="collapse" data-bs-target="#delivery-collapse"
+						aria-expanded="false">
+						<i class="fa-solid fa-angle-down me-1"></i> Delivery
+					</button>
+					<div class="collapse" id="delivery-collapse">
+						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							<li><a th:href="@{/deliverys}" class="link-dark rounded"
+								style="color: white">Delivery</a></li>
+							<li><a th:href="@{/deliverymans}" class="link-dark rounded"
+								style="color: white">Delivery Man</a></li>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<button style="color: white"
+						class="btn btn-toggle align-items-center rounded collapsed"
+						data-bs-toggle="collapse"
+						data-bs-target="#reservationPayment-collapse"
+						aria-expanded="false">
+						<i class="fa-solid fa-angle-down me-1"></i> Reservation
+					</button>
+					<div class="collapse" id="reservationPayment-collapse">
+						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							<li><a th:href="@{/reservationPayments-bs}"
+								class="link-dark rounded" style="color: white">ReservationPayment</a></li>
+							<li><a th:href="@{/creditCards-bs}"
+								class="link-dark rounded" style="color: white">Credit Card</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<main>
 
