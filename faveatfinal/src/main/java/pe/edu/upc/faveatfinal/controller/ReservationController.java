@@ -74,7 +74,7 @@ public class ReservationController {
 				model.addAttribute("reservation", optional.get());
 				
 				List<Reservation> reservation = reservationsService.getAll();
-				model.addAttribute("reservation", reservation);
+				model.addAttribute("reservations", reservation);
 			} 
 			else {
 				return "redirect:/reservations";

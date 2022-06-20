@@ -9,48 +9,42 @@
 	<div th:replace="/layout/layout :: frag-sidebar"></div>
 	<main>
 		<section>
-		<nav aria-label="breadcrumb" class="mt-3 mx-5">
-	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#"> Home</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Reservaciones</li>
-	  </ol>
-	</nav>
+			<nav aria-label="breadcrumb" class="mt-3 mx-5">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#"> Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Reservations</li>
+				</ol>
+			</nav>
 			<div class="card text-center margin-20">
 				<div class="card-body">
 
-					<h2 class="h3 mb-4 text-gray-800">Reservaciones</h2>
+					<h2 class="h3 mb-4 text-gray-800">Reservations</h2>
 					<div class="card-footer text-muted text-end">
-						<a class="btn"  style="background-color:black; color:white" th:href="@{/reservations/new}" role="button">
-							<i class="fas fa-plus"></i> Nueva Reservacion
+						<a class="btn" style="background-color: black; color: white"
+							th:href="@{/reservations/new}" role="button"> <i
+							class="fas fa-plus"></i> New Reservations
 						</a>
 					</div>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Tipo de Reservacion</th>
-								<th scope="col">Dia Inicio de Reservacion</th>
-								<th scope="col">Dia Termino de Reservacion</th>
-								<th scope="col"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="reservation : ${reservations}">
-								<th scope="row" th:text=${reservation.reservationId}></th>
-								<td th:text=${reservation.typeReservation}></td>
-								<td th:text=${reservation.dateStartReservation}></td>
-								<td th:text=${reservation.dateEndReservation}></td>
-								<td>
-		      	<a class="btn btn-warning" th:href="@{'/reservations/' + ${reservation.reservationId} + '/edit'}" role="button"> <i class="fas fa-edit"></i> </a>
-		      	<a class="btn btn-danger" th:href="@{'/reservations/' + ${reservation.reservationId} + '/del'}" role="button"> <i class="fas fa-trash-alt"></i> </a>
-		      </td>
-							</tr>
-						</tbody>
-					</table>
+					
+					<div class="row">
+						<div th:each="reservation : ${reservations}" class="col-sm-6">
+							<div class="card" style="margin-bottom: 25px;">
+								<div class="card-body">
+									<h5 th:text="${reservation.typeReservation}" class="card-title">Tipo de Reservacion</h5>
+									<p th:text="${'Start Day: ' + reservation.dateStartReservation}" class="card-text"></p>
+									<p th:text="${'End Day: ' + reservation.dateEndReservation}" class="card-text"></p>
+									<a class="btn btn-danger"
+										th:href="@{'/reservations/' + ${reservation.reservationId} + '/del'}"
+										role="button"> <i class="fas fa-trash-alt"></i> Delete Reservation
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
-		
+
 	</main>
 	<footer th:replace="/layout/layout :: frag-footer"></footer>
 </body>

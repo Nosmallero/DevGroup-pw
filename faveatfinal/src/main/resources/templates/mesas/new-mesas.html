@@ -14,24 +14,24 @@
 			<nav aria-label="breadcrumb" class="mt-2 mx-3">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<li class="breadcrumb-item"><a th:href="@{/mesas}">Mesas</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/mesas}">Table</a></li>
 					<li class="breadcrumb-item active" aria-current="page">New</li>
 				</ol>
 			</nav>
 
 			<div class="card text-center margin-20">
-				<div class="card-header">Mesas</div>
+				<div class="card-header">Tables</div>
 				<div class="card-body" style="text-align: left;">
 
 					<form th:action="@{/mesas/savenew}" th:object="${mesa}"
 						method="post" class="row g-3 needs-validation" novalidate>
 						<div class="col-md-3">
-							<label for="typeTable" class="form-label">Tipo de mesa</label> <input
+							<label for="typeTable" class="form-label">Table Type</label> <input
 								type="text" class="form-control" th:field="*{typeTable}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 						<div class="col-md-3">
-							<label for="capacityTable" class="form-label">Capacidad de mesa</label> <input
+							<label for="capacityTable" class="form-label">Table Capacity</label> <input
 								type="text" class="form-control" th:field="*{capacityTable}"
 								required>
 							<div class="valid-feedback">Looks good!</div>

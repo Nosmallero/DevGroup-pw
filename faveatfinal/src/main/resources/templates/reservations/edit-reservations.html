@@ -13,9 +13,9 @@
 
 			<nav aria-label="breadcrumb" class="mt-2 mx-3">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item"><a href="#">Inicio</a></li>
 					<li class="breadcrumb-item"><a th:href="@{/reservations}">Reservaciones</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Edit</li>
+					<li class="breadcrumb-item active" aria-current="page">Editar</li>
 					<li class="breadcrumb-item active" aria-current="page">Reservaciones</li>
 				</ol>
 			</nav>
@@ -28,19 +28,26 @@
 						th:object="${reservation}" method="post"
 						class="row g-3 needs-validation" novalidate>
 						<div class="col-md-3">
-							<label for="typeReservation" class="form-label">Type</label> <input
+							<label for="typeReservation" class="form-label">Tipo de Reservacion</label> <input
 								type="text" class="form-control" th:field="*{typeReservation}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 						<div class="col-md-3">
-							<label for="dateStartReservation" class="form-label">Description</label> <input
+							<label for="dateStartReservation" class="form-label">Dia Inicio de Reservacion</label> <input
 								type="text" class="form-control" th:field="*{dateStartReservation}"
+								required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+						
+						<div class="col-md-3">
+							<label for="dateEndReservation" class="form-label">Dia Termino de Reservacion</label> <input
+								type="text" class="form-control" th:field="*{dateEndReservation}"
 								required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 						<div class="col-12" style="text-align: center;">
 							<button class="btn" style="background-color:black; color:white" type="submit">
-								<i class="fas fa-save"></i> Update
+								<i class="fas fa-save"></i> Actualizar
 							</button>
 						</div>
 					</form>
