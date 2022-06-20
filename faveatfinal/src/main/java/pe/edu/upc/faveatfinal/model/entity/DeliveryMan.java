@@ -34,59 +34,80 @@ public class DeliveryMan {
 	@OneToMany(mappedBy = "deliveryMan")
 	private List<Delivery> deliverys;
 	
+	@OneToMany(mappedBy = "deliveryMan")
+	private List<DeliveryPayment> deliveryPayments;
+
 	
-	
-	public DeliveryMan() {
-		deliverys = new ArrayList<>();
-	}
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public List<Delivery> getDeliverys() {
-		return deliverys;
-	}
-	public void setDeliverys(List<Delivery> deliverys) {
-		this.deliverys = deliverys;
-	}
+
 	public String getPhoto() {
 		return photo;
 	}
+
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	
-	
+
+	public List<Delivery> getDeliverys() {
+		return deliverys;
+	}
+
+	public void setDeliverys(List<Delivery> deliverys) {
+		this.deliverys = deliverys;
+	}
+
+	public List<DeliveryPayment> getDeliveryPayments() {
+		return deliveryPayments;
+	}
+
+	public void setDeliveryPayments(List<DeliveryPayment> deliveryPayments) {
+		this.deliveryPayments = deliveryPayments;
+	}
+
 }

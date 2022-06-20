@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.faveatfinal.business.crud.CreditCardService;
+import pe.edu.upc.faveatfinal.business.crud.DeliveryManService;
 import pe.edu.upc.faveatfinal.business.crud.DeliveryPaymentService;
 import pe.edu.upc.faveatfinal.model.entity.CreditCard;
+import pe.edu.upc.faveatfinal.model.entity.DeliveryMan;
 import pe.edu.upc.faveatfinal.model.entity.DeliveryPayment;
 
 @Controller
@@ -28,6 +30,8 @@ public class DeliveryPaymentBsController {
 	
 	@Autowired
 	private CreditCardService creditCardService;
+	@Autowired
+	private DeliveryManService deliveryManService;
 	
 	@GetMapping  // /deliveryPayments
 	public String listDeliveryPayments(Model model) {
@@ -48,6 +52,8 @@ public class DeliveryPaymentBsController {
 		DeliveryPayment deliveryPayment = new DeliveryPayment();
 		model.addAttribute("deliveryPayment", deliveryPayment);
 		try {
+			List<DeliveryMan> deliverymans = deliveryManService.getAll();
+			model.addAttribute("deliverymans", deliverymans);
 			List<CreditCard> creditCards = creditCardService.getAll();
 			model.addAttribute("creditCards", creditCards);
 			
