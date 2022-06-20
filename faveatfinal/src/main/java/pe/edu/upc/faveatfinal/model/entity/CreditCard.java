@@ -35,11 +35,9 @@ public class CreditCard {
 	
 	@OneToMany(mappedBy = "creditCard")
 	private List<ReservationPayment> reservationPayments;
-
 	
-	public CreditCard() {
-		reservationPayments = new ArrayList<>();
-	}
+	@OneToMany(mappedBy = "creditCard")
+	private List<DeliveryPayment> deliveryPayments;
 
 	public Integer getId() {
 		return id;
@@ -88,5 +86,14 @@ public class CreditCard {
 	public void setReservationPayments(List<ReservationPayment> reservationPayments) {
 		this.reservationPayments = reservationPayments;
 	}
+
+	public List<DeliveryPayment> getDeliveryPayments() {
+		return deliveryPayments;
+	}
+
+	public void setDeliveryPayments(List<DeliveryPayment> deliveryPayments) {
+		this.deliveryPayments = deliveryPayments;
+	}
+
 }
 	
