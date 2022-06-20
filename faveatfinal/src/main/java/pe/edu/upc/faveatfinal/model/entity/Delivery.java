@@ -31,7 +31,7 @@ public class Delivery {
 	@JoinColumn(name = "deliveryMan_id")
 	private DeliveryMan deliveryMan;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "food_id")
 	private Food food;
 
