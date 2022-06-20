@@ -21,7 +21,7 @@ public class DeliveryPayment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "nameDelivery", length = 100, nullable = false)	
+	@Column(name = "nameDelivery", length = 100)	
 	private String nameDelivery;
 	
 	@Column(name = "payment_Amount", nullable = false)	
@@ -30,6 +30,10 @@ public class DeliveryPayment {
 	@ManyToOne
 	@JoinColumn(name = "creditCard_id")
 	private CreditCard creditCard;
+	
+	@ManyToOne
+	@JoinColumn(name = "deliveryMan_id")
+	private DeliveryMan deliveryMan;
 
 	public Integer getId() {
 		return id;
@@ -61,6 +65,14 @@ public class DeliveryPayment {
 
 	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
+	}
+
+	public DeliveryMan getDeliveryMan() {
+		return deliveryMan;
+	}
+
+	public void setDeliveryMan(DeliveryMan deliveryMan) {
+		this.deliveryMan = deliveryMan;
 	}
 
 }
