@@ -74,7 +74,7 @@ public class MesasController {
 				model.addAttribute("mesa", optional.get());
 				
 				List<Mesas> mesas = mesasService.getAll();
-				model.addAttribute("mesa", mesas);
+				model.addAttribute("mesas", mesas);
 			} 
 			else {
 				return "redirect:/mesas";
@@ -88,8 +88,7 @@ public class MesasController {
 	}
 	
 	@PostMapping("{id}/update")
-	public String updateMesas(Model model, @ModelAttribute("mesa") Mesas mesa,
-			@PathVariable("id") Integer id)
+	public String updateMesas(Model model, @ModelAttribute("mesa") Mesas mesa, @PathVariable("id") Integer id)
 	{
 		try {
 			if (mesasService.existById(id)) {

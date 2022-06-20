@@ -9,12 +9,12 @@
 	<div th:replace="/layout/layout :: frag-sidebar"></div>
 	<main>
 
-		<section>
+		<section class ="section">
 
 			<nav aria-label="breadcrumb" class="mt-2 mx-3">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<li class="breadcrumb-item"><a th:href="@{/mesas}">Menus</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/mesas}">Tables</a></li>
 					<li class="breadcrumb-item active" aria-current="page">Edit</li>
 					<li class="breadcrumb-item active" aria-current="page">Menus</li>
 				</ol>
@@ -24,20 +24,20 @@
 				<div class="card-header"></div>
 				<div class="card-body" style="text-align: left;">
 
-					<form th:action="@{'/mesas/' + ${mesa.tablesId} + '/update'}"
-						th:object="${mesa}" method="post"
-						class="row g-3 needs-validation" novalidate>
+					<form th:action="@{'/mesas/' + ${mesa.tablesId} + '/update'}" th:object="${mesa}" method="post" class="row g-3 needs-validation" novalidate>
+						
 						<div class="col-md-3">
-							<label for="typeTable" class="form-label">Type</label> <input
-								type="text" class="form-control" th:field="*{typeTable}" required>
+							<label for="typeTable" class="form-label">Type</label>
+							<input type="text" class="form-control" th:field="*{typeTable}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
+						
 						<div class="col-md-3">
-							<label for="capacityTable" class="form-label">Description</label> <input
-								type="text" class="form-control" th:field="*{capacityTable}"
-								required>
+							<label for="capacityTable" class="form-label">Quantity</label>
+							<input type="text" class="form-control" th:field="*{capacityTable}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
+						
 						<div class="col-12" style="text-align: center;">
 							<button class="btn" style="background-color:black; color:white" type="submit">
 								<i class="fas fa-save"></i> Update
