@@ -85,6 +85,8 @@ public class DeliveryController {
 				model.addAttribute("delivery", optional.get());
 				List<DeliveryMan> deliverymans = deliveryManService.getAll();
 				model.addAttribute("deliverymans", deliverymans);
+				List<Food> foods = foodService.getAll();
+				model.addAttribute("foods", foods);
 			} else {
 				return "redirect:/deliverys";
 			}
