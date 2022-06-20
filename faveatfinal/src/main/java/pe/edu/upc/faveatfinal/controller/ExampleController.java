@@ -8,13 +8,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/ejemplo")
 public class ExampleController {
 	
-	@GetMapping	//	/ejemplo
-	public String ejemplo() {
-		return "example";
-	}
-	
-	@GetMapping("base")	//  /ejemplo/base
-	public String base() {
-		return "layout/base";
-	}
 }
