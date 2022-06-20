@@ -57,6 +57,34 @@ public class ReservationPaymentBsController {
 		return "reservationPayments-bs/new-reservationPayment";
 	}
 	
+	@GetMapping("new1") // /creditCards/new
+	public String newCreditCard(Model model) {
+		
+		CreditCard creditCard = new CreditCard();
+		model.addAttribute("creditCard", creditCard);
+		try {
+			List<CreditCard> creditCards = creditCardService.getAll();
+			model.addAttribute("creditCards", creditCards);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "reservationPayments-bs/new1-creditCard";
+	}
+	
+	@PostMapping("savenew1") //creditCards/savenew
+	public String saveCreditCard(Model model, @ModelAttribute("creditCard") CreditCard creditCard)
+	{
+		try {
+			CreditCard creditCardSaved = creditCardService.create(creditCard);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/reservationPayments-bs";
+	}
+	
 	@PostMapping("savenew") //reservationPayments/savenew
 	public String saveReservationPayment(Model model, @ModelAttribute("reservationPayment") ReservationPayment reservationPayment)
 	{
