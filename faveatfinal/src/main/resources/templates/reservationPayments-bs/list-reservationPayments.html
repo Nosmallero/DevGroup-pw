@@ -21,33 +21,77 @@
 
 			<div class="card text-center margin-20">
 				<div class="card-header">Reservation Payments Business</div>
-				<div class="card-body">
+				<div class="card-footer text-muted text-end">
+				<a class="btn" style="background-color: rgb(3, 30, 78); color: white"
+							th:href="@{/reservationPayments-bs/new}" role="button"> <i class="fas fa-plus"></i>
+							Realizar Pago de Reserva
+						</a>
 
 					<div class="row">
 					  <div th:each="reservationPayment : ${reservationPayments}" class="col-sm-3 margin-b-10">
 					    <div class="card">
 					      <div class="card-body">
+							      <a href="/" class=""
+								style="font-family: 'Caveat Brush', cursive; color: white; text-decoration: none">
+								<img class="logo-sidebar" th:src="@{/img/ReservaMesas.jpg}"
+								width="240em" height="200em" alt="" /> FavEat
+							</a>
 					        <h5 class="card-title" th:text="${reservationPayment.nameReservation}" >nR</h5>
-					        <h6 class="card-subtitle mb-2 text-muted" th:text="${reservationPayment.paymentAmount}">pA</h6>
+					        
+					        
 					        <p class="card-text">
-					        The client pays his reservation with <span th:text="${reservationPayment.creditCard.typeCard}"></span> Credit Card.
-					        </p>
-					       <a class="btn btn-warning"
-									th:href="@{'/reservationPayments-bs/' + ${reservationPayment.id} + '/edit'}"
-									role="button"><i class="fas fa-cog"></i> Edit </a> 
+					       <i class="fas fa-hand-holding-usd"></i> El monto que paga el cliente es:   <span th:text="${reservationPayment.paymentAmount}"></span>
+					        <p class="card-text">
+					       <i class="far fa-credit-card"></i>  El metodo de pago es:   <span th:text="${reservationPayment.creditCard.typeCard}"></span> 
+					 
+					         <p class="card-text">
+					       <p><i class="fas fa-shield"></i> <span th:text="${reservationPayment.creditCard.numberCard}"></span>
+					        <p class="card-text">
+					       <p><i class="fas fa-lock"></i> El Codigo de Seguridad es: <span th:text="${reservationPayment.creditCard.securityCode}"></span>
+					       <p><i class="fas fa-calendar-alt"></i> La Fecha de Expiracion es: <span th:text="${reservationPayment.creditCard.expirationDate}"></span>
+					        </p>			
+									<a class="btn" style="background-color: rgb(3, 30, 78); color: white"
+							th:href="@{/reservationPayments-bs/new1}" role="button"> <i class="fas fa-plus"></i>
+							Tarjeta
+						</a>
 									<a class="btn btn-danger"
 									th:href="@{'/reservationPayments-bs/' + ${reservationPayment.id} + '/del'}"
-									role="button"><i class="fas fa-trash"></i> Delete </a>
+									role="button"><i class="fas fa-times-circle"></i> Cancelar Reserva </a>
 					      </div>
 					    </div>
 					  </div>
 					 
 
+
+</div>
+					<!--table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">#</th>
+				      <th scope="col">Name Reservation</th>
+				      <th scope="col">Payment Amount</th>
+				       <th scope="col">Credit Card</th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="reservationPayment : ${reservationPayments-bs}">
+				      <th scope="row" th:text="${reservationPayment.id}"></th>
+				      <td th:text="${reservationPayment.nameReservation}"></td>
+				      <td th:text="${reservationPayment.paymentAmount}"></td>
+				      <td th:text="${reservationPayment.creditCard.typeCard}"></td>
+				      
+				      <td>
+				      <a class="btn btn-warning" th:href="@{'/reservationPayments-bs/' + ${creditCard} + '/new1'}" role="button"><i class="fas fa-cog"></i></a>
+				      <a class="btn btn-danger" th:href="@{'/reservationPayments-bs/' + ${reservationPayment.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table-->
+
 				</div>
 				<div class="card-footer text-muted">
-					<a class="btn btn-primary" th:href="@{/reservationPayments-bs/new}"
-						role="button"><i class="fas fa-plus-circle"></i> 
-					</a>
+				
 				</div>
 			</div>
 		</section>
