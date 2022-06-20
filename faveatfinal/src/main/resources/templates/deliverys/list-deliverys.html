@@ -1,29 +1,78 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: frag-head">
-	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+<meta charset="ISO-8859-1">
+
+<title>Mis Deliverys</title>
+
 </head>
 <body>
 	<header th:insert="layout/layout :: frag-header"></header>
 	<div th:replace="/layout/layout :: frag-sidebar"></div>
 	<main>
-	
-	<section class ="section">
-		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#">Home</a></li>
-		    <li class="breadcrumb-item active" aria-current="page">Delivery</li>
-		  </ol>
-		</nav>
-	
-		<div class="card text-center">
-		  <div class="card-header">
-		    Delivery
-		  </div>
-		  <div class="card-body">
-		    
-				<table class="table">
+
+		<section class="section">
+			<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Delivery</li>
+				</ol>
+			</nav>
+			
+			<div class="card text-center">
+				<div class="card-header">Mis Deliverys</div>
+				<div class="card-footer text-muted text-end">
+						<a class="btn" style="background-color: red; color: white"
+							th:href="@{/deliverys/new}" role="button"> <i class="fas fa-plus"></i>
+							Realizar nuevo delivery
+						</a>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div th:each="delivery : ${deliverys}" class="col-sm-4">
+							<div class="card">
+								<h5 class="card-title" th:text="${delivery.food.name}"></h5>
+								<div>
+									<img th:src="${delivery.food.image}"
+										style="width: 300px; height: 200px;"> 
+								</div>
+								<div  class="card-body">
+
+									<div>
+										<div class="container">
+											<div class="container-card">
+												<div class="header-deliveryman">
+													<p class="card-text">
+														El repartidor encargado de traerle la comida es: <span
+															th:text="${delivery.deliveryMan.firstName} + ' ' + ${delivery.deliveryMan.lastName}"></span><br><br>
+														Entregar de propina el monto de <i class="fas fa-money-bill"></i> <span th:text="${delivery.tip}"></span>
+													</p>
+												</div>
+												<div class="photo-deliveryman">
+													<img th:src="${delivery.deliveryMan.photo}" style="width: 150px; height: 150px;">
+												</div>
+											</div>
+										</div>
+										<p><i class="fas fa-biking"></i> La hora aproximada de entrega es a las <i class="fas fa-clock"></i> <span
+												th:text="${delivery.dateDelivery}"></span>
+										</p>
+										<p>
+											Detalles Extra :  <br> <span th:text="${delivery.description}"></span>
+										</p>
+										<a class="btn btn-danger"
+											th:href="@{'/deliverys/' + ${delivery.id} + '/delete'}"
+											role="button"><i class="fas fa-times-circle"></i> Cancelar Delivery</a>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+					<!--table class="table">
 				  <thead>
 				    <tr class="table-danger">
 				      <th scope="col">#</th>
@@ -48,15 +97,15 @@
 				      </td>
 				    </tr>
 				  </tbody>
-				</table>
-						    
-		  </div>
-		  <div class="card-footer text-muted">
-		   <a class="btn btn-danger" th:href="@{/deliverys/new}" role="button"><i class="fas fa-plus-circle"></i></a>
-		  </div>
-		</div>
-	</section>
-	
+				</table-->
+
+				</div>
+				<div class="card-footer text-muted">
+					
+				</div>
+			</div>
+		</section>
+
 	</main>
 	<footer th:replace="layout/layout :: frag-footer"></footer>
 </body>

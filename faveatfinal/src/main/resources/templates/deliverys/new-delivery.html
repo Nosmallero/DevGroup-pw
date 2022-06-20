@@ -58,6 +58,17 @@
 				    </div>
 				  </div>
 					  
+				<div class="col-md-3">
+				    <label for="food" class="form-label">Delivery Man</label>
+				    <select class="form-select" th:field="*{food}" required>
+				      <option value="">Elige una comida</option>
+				      <option th:each="food : ${foods}" th:value="${food.id}" th:text="${food.name}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+				  	  
 				  <div class="col-12" style="text-align: center;">
 				    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Create</button>
 				  </div>
