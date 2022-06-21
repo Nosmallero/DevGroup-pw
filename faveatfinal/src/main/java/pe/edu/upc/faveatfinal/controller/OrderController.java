@@ -84,6 +84,21 @@ public class OrderController {
 		return "redirect:/orders";
 	}
 	
+	@GetMapping("{id}/delete")
+	public String deleteOrder(Model model, @PathVariable("id") Integer id) {
+		try {
+			if(orderService.existById(id)) {
+				orderService.deleteById(id);
+			} else {
+				return "redirect:/orders";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/orders";
+	}
+	/*
 	@GetMapping("{id}/edit")
 	public String editOrder(Model model, @PathVariable("id") Integer id) {
 		
@@ -121,20 +136,7 @@ public class OrderController {
 			e.printStackTrace();
 		}
 		return "redirect:/orders";
-	}
+	}*/
 	
-	@GetMapping("{id}/delete")
-	public String deleteOrder(Model model, @PathVariable("id") Integer id) {
-		try {
-			if(orderService.existById(id)) {
-				orderService.deleteById(id);
-			} else {
-				return "redirect:/orders";
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "redirect:/orders";
-	}
+	
 }
