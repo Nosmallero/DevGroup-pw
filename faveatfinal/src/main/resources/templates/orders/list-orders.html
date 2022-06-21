@@ -31,7 +31,7 @@
 								<div class="card">
 									<div class="card-body">
 
-										<h5 class="card-title" th:text="${order.id}">nR</h5>
+										<h5 class="card-title" th:text="${order.id}">Órden #</h5>
 										<h5 class="card-title" th:text="${order.food.name}">name</h5>
 
 										<div>
@@ -41,18 +41,33 @@
 
 
 										<p class="card-text">
-											<i class="fas fa-hand-holding-usd"></i> Restaurant: <span
+											<i class="fas fa-date"></i> Restaurant: <span
 												th:text="${order.restaurant.name_restaurant}"></span>
 										<p class="card-text">
-											<i class="far fa-credit-card"></i> Customer: <span
-												th:text="${order.customer.id}"></span>
+											<i class="far fa-person-card"></i> Customer: <span
+												th:text="${order.customer.firstName} + ${order.customer.lastName}"></span>
 										<p class="card-text">
-											<i class="fas fa-hand-holding-usd"></i> Date: <span
+											<i class="fas fa-date"></i> Date: <span
 												th:text="${order.dateOrder}"></span>
 										<p class="card-text">
-											<i class="far fa-credit-card"></i> Description: <span
-												th:text="${order.description}"></span> <br>
-											<br> <a class="btn btn-danger"
+											<i class="far fa-person-card"></i> Description: <span
+												th:text="${order.description}"></span> 
+									    
+									    <p class="card-text">
+											<i class="far fa-person-card"></i> Costo: <span
+												th:text="${order.food.cost} + soles"></span> 
+										
+										<p class="card-text">
+											<i class="far fa-state-card"></i> Estado: <span
+												>En proceso...</span> 
+										
+												
+											<br>
+											<br> 
+											<a class="btn btn-primary"
+												role="button"><i class="fas fa-holding-usd"></i>
+												Reservar </a>
+											<a class="btn btn-danger"
 												th:href="@{'/orders/' + ${order.id} + '/delete'}"
 												role="button"><i class="fas fa-times-circle"></i>
 												Cancelar </a>
