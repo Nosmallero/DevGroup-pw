@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.upc.faveatfinal.business.crud.CustomerService;
+import pe.edu.upc.faveatfinal.business.crud.FoodService;
 import pe.edu.upc.faveatfinal.business.crud.OrderService;
 import pe.edu.upc.faveatfinal.business.crud.RestaurantService;
 import pe.edu.upc.faveatfinal.model.entity.Customer;
+import pe.edu.upc.faveatfinal.model.entity.Food;
 import pe.edu.upc.faveatfinal.model.entity.Order;
 import pe.edu.upc.faveatfinal.model.entity.Restaurant;
 
@@ -34,6 +36,9 @@ public class OrderController {
 	
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private FoodService foodService;
 	
 	@GetMapping  // /orders
 	public String ListOrders(Model model) {
@@ -59,6 +64,8 @@ public class OrderController {
 			model.addAttribute("restaurants", restaurants);
 			List<Customer> customers = customerService.getAll();
 			model.addAttribute("customers", customers);
+			List<Food> foods = foodService.getAll();
+			model.addAttribute("foods", foods);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,6 +95,8 @@ public class OrderController {
 				model.addAttribute("restaurants", restaurants);
 				List<Customer> customers = customerService.getAll();
 				model.addAttribute("customers", customers);
+				List<Food> foods = foodService.getAll();
+				model.addAttribute("foods", foods);
 			} else {
 				return "redirect:/orders";
 			}

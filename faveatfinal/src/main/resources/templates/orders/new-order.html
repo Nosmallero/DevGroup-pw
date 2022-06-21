@@ -30,7 +30,7 @@
 								class="form-select" th:field="*{restaurant}" required>
 								<option value="">Elige un restaurante</option>
 								<option th:each="restaurant : ${restaurants}"
-									th:value="${restaurant.restaurantId}"
+									th:value="${restaurant.id}"
 									th:text="${restaurant.name_restaurant}"></option>
 							</select>
 							<div class="invalid-feedback">Please select a valid state.
@@ -50,7 +50,7 @@
 
 						<div class="col-md-4">
 							<label for="dateOrder" class="form-label">Date of
-								Delivery</label> <input type="text" class="form-control"
+								Delivery</label> <input type="date" class="form-control"
 								th:field="*{dateOrder}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
@@ -60,6 +60,17 @@
 								type="text" class="form-control" th:field="*{description}"
 								required>
 							<div class="valid-feedback">Looks good!</div>
+						</div>
+						
+						<div class="col-md-3">
+							<label for="food" class="form-label">Food</label> <select
+								class="form-select" th:field="*{food}" required>
+								<option value="">Elige un comida</option>
+								<option th:each="food : ${foods}"
+									th:value="${food.id}" th:text="${food.name}"></option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
 						</div>
 
 
