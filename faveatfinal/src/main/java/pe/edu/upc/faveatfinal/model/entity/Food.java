@@ -43,6 +43,9 @@ public class Food {
 	private List<FoodsOrder> foodsOrder;
 	
 	@OneToMany(mappedBy = "food")
+	private List<Order> order;
+	
+	@OneToMany(mappedBy = "food")
 	private List<Delivery> delivery;
 
 	public Integer getId() {
@@ -115,6 +118,14 @@ public class Food {
 
 	public void setDelivery(List<Delivery> delivery) {
 		this.delivery = delivery;
+	}
+
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
 	}
 
 	
