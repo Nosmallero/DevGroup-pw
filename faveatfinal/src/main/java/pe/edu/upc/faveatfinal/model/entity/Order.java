@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -35,7 +37,12 @@ public class Order {
 	
 	@Column(name = "date_order", nullable = false)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOrder;
+	
+	@ManyToOne
+	@JoinColumn(name = "food_id")
+	private Food food;
 	
 	
 	@Column(name = "description_order", length = 20, nullable = false)	
@@ -83,6 +90,22 @@ public class Order {
 
 	public void setDateOrder(Date dateOrder) {
 		this.dateOrder = dateOrder;
+	}
+
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
+	}
+
+	public List<FoodsOrder> getFoodsOrder() {
+		return foodsOrder;
+	}
+
+	public void setFoodsOrder(List<FoodsOrder> foodsOrder) {
+		this.foodsOrder = foodsOrder;
 	}
 
 	
