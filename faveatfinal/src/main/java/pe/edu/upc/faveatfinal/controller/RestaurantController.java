@@ -86,6 +86,7 @@ public class RestaurantController {
 				Optional<Restaurant> optional = restaurantService.findById(id);
 				model.addAttribute("restaurant", optional.get());
 				List<MenuRestaurant> menuRestaurants = menuRestaurantService.getAll();
+				//List<MenuRestaurant> menuRestaurants = optional.get().getMenuRestaurant();
 				model.addAttribute("menuRestaurants", menuRestaurants);
 				List<Food> foods = foodService.getAll();
 				model.addAttribute("foods", foods);
