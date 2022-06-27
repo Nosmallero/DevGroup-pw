@@ -24,7 +24,7 @@ import pe.edu.upc.faveatfinal.model.entity.Food;
 
 @Controller
 @RequestMapping("/deliverys")
-@SessionAttributes("{delivery}")
+
 public class DeliveryController {
 
 	@Autowired

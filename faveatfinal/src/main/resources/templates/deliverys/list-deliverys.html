@@ -20,11 +20,11 @@
 			</nav>
 			
 			<div class="card text-center">
-				<div class="card-header">Mis Deliverys</div>
+				<div class="card-header">Deliverys en curso</div>
 				<div class="card-footer text-muted text-end">
 						<a class="btn" style="background-color: red; color: white"
 							th:href="@{/deliverys/new}" role="button"> <i class="fas fa-plus"></i>
-							Realizar nuevo delivery
+							Realizar nuevo pedido
 						</a>
 				</div>
 				<div class="card-body">
@@ -45,7 +45,7 @@
 													<p class="card-text">
 														El repartidor encargado de traerle la comida es: <span
 															th:text="${delivery.deliveryMan.firstName} + ' ' + ${delivery.deliveryMan.lastName}"></span><br><br>
-														Entregar de propina el monto de <i class="fas fa-money-bill"></i> <span th:text="${delivery.tip}"></span>
+														Entregar de propina el monto de <i class="fas fa-money-bill"></i> <span th:text="${(delivery.food.cost) + (delivery.tip)}"></span>
 													</p>
 												</div>
 												<div class="photo-deliveryman">
