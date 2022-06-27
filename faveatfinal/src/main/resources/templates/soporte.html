@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+
+<title>Soporte</title>
+
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	
+	<div style="text-align: center; padding: 150px; display: flex; align-items: center; justify-content: center;">
+	
+		<div class=flex-soporte style="display:flex; border: 5px solid #DC143C; padding:50px;">
+		<div style="padding-right: 60px; max-width: 650px; ">
+			
+			<h3>Entre las principales medidas que se llevaran a cabo se
+				encuentra la entrega de kits de proteccion a los repartidores, que
+				seran repuestos cada vez que sea necesario. Este kit de proteccion
+				contara con mascarillas lavables, guantes de nitrilo, alcohol
+				isopropilico, protector para el cabello y alcohol en gel, asi como
+				cualquier requerimiento establecido por las autoridades. Ademas,
+				para evitar la aglomeracion de repartidores.</h3> </div>
+				<div><img src="https://i.imgur.com/KqcbEkA.jpg" style="width: 350px; height: 350px;"></div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

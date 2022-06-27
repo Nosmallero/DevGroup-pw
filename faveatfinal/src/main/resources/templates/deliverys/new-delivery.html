@@ -48,10 +48,10 @@
 				  
 				  
 				  <div class="col-md-3">
-				    <label for="deliveryMan" class="form-label">Delivery Man</label>
+				    <label for="deliveryMan" class="form-label"></label>
 				    <select class="form-select" th:field="*{deliveryMan}" required>
 				      <option value="">Elige un repartidor</option>
-				      <option th:each="deliveryman : ${deliverymans}" th:value="${deliveryman.id}" th:text="${deliveryman.firstName}"></option>
+				      <option th:each="deliveryman : ${deliverymans}" th:value="${deliveryman.id}" th:text="${deliveryman.firstName} + ' ' + ${deliveryman.lastName}"></option>
 				    </select>
 				    <div class="invalid-feedback">
 				      Please select a valid state.
@@ -59,7 +59,7 @@
 				  </div>
 					  
 				<div class="col-md-3">
-				    <label for="food" class="form-label">Delivery Man</label>
+				    <label for="food" class="form-label"></label>
 				    <select class="form-select" th:field="*{food}" required>
 				      <option value="">Elige una comida</option>
 				      <option th:each="food : ${foods}" th:value="${food.id}" th:text="${food.name}"></option>
