@@ -23,7 +23,7 @@ public class InitUser implements CommandLineRunner {
 		
 		// SIEMPRE DEBE DE ESTAR COMENTADO
 		// SOLO SE DEBE DESBLOQUEAR CUANDO SE CREAN USUARIO
-		/*User diego = new User();
+	    User diego = new User();
 		diego.setUsername("diego");
 		diego.setPassword(bcpe.encode("diego"));	
 		diego.setSegment(Segment.CUSTOMER);
@@ -46,7 +46,7 @@ public class InitUser implements CommandLineRunner {
 		User admin = new User("admin", bcpe.encode("admin"), Segment.RESTAURANTOWNER, 2);
 		admin.addAuthority("ROLE_ADMINISTRATOR");
 		admin.addAuthority("ACCESS_ALL");
-		userRepository.save(admin);*/
+		userRepository.save(admin);
 				
 	}
 

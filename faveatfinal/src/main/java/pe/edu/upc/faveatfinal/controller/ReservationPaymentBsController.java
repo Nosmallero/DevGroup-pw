@@ -135,7 +135,7 @@ public class ReservationPaymentBsController {
 		return "redirect:/reservationPayments-bs";
 	}
 	
-	@GetMapping("{id}/del") //reservationPayments/1/delete
+	@GetMapping("{id}/del") //reservationPayments/1/del
 	public String deleteReservationPayment(Model model, @PathVariable("id") Integer id)
 	{
 		try {
