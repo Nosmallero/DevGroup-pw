@@ -15,6 +15,7 @@ import pe.edu.upc.faveatfinal.business.crud.FoodService;
 import pe.edu.upc.faveatfinal.business.crud.RestaurantService;
 import pe.edu.upc.faveatfinal.model.entity.Food;
 import pe.edu.upc.faveatfinal.model.entity.Restaurant;
+import pe.edu.upc.faveatfinal.utils.UserAuthentication;
 
 @Controller
 @RequestMapping("/")
@@ -25,6 +26,9 @@ public class IndexController {
 	
 	@Autowired
 	private FoodService foodService;
+	
+	@Autowired
+	private UserAuthentication userAuthentication;
 	
 	@GetMapping("/")
 	public String Search(Model model) {
@@ -55,4 +59,8 @@ public class IndexController {
 		return "restaurants/search-food-restaurant";
 
 	}
+	
+	
+
+	
 }

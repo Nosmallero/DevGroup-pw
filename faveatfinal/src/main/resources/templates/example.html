@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="frag-head">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,10 +74,22 @@ body {
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<div class="navbar-nav ms-auto mt-2 mt-lg-15">
-						<button type="button" class="btn btn-light text-dark me-2">Ingresar</button>
-						<button type="button" class="btn"
-							style="background-color: #EA3C3C; color: white">Registrarse</button>
+						
+							<a sec:authorize="isAnonymous()" class="btn btn-outline-danger" th:href="@{/login}" role="button"><i class="fas fa-user"></i> Sign-in</a>
 					</div>
+				</div>
+				<div class="dropdown" sec:authorize="isAuthenticated()" style="padding-left: 10px; margin-right: 70px;">
+					<a class="btn btn-outline-danger dropdown-toggle" href="#"
+						role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+						aria-expanded="false"> <i class="fas fa-user-circle"></i> <span
+						sec:authentication="name">Username</span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="#">View Profile</a></li>
+						<li><a class="dropdown-item" href="#">Change Password</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -137,7 +149,7 @@ body {
 					</button>
 					<div class="collapse" id="delivery-collapse">
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							<li><a th:href="@{/deliverys}" class="link-dark rounded"
+							<li sec:authorize="hasRole('ROLE_CUSTOMER')"><a th:href="@{/deliverys}" class="link-dark rounded"
 								style="color: white">Delivery</a></li>
 							<li><a th:href="@{/deliverymans}" class="link-dark rounded"
 								style="color: white">Delivery Man</a></li>
