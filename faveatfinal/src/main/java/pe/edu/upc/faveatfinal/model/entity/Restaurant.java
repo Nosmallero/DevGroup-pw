@@ -58,10 +58,26 @@ public class Restaurant {
 
 	@OneToMany(mappedBy = "restaurant")
 	private List<MenuRestaurant> menuRestaurant;
+	
+	@OneToMany(mappedBy = "restaurant")
+	private List<Reservation> reservation;
 
 	public Integer getId() {
 		return id;
 	}
+
+
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
+
 
 
 	public void setId(Integer id) {
