@@ -115,6 +115,4 @@ public class User {
 		this.idSegment = idSegment;
 	}
 	
-
-	
 }
