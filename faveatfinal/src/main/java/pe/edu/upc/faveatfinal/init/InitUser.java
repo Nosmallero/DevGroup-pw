@@ -23,8 +23,8 @@ public class InitUser implements CommandLineRunner {
 		
 		// SIEMPRE DEBE DE ESTAR COMENTADO
 		// SOLO SE DEBE DESBLOQUEAR CUANDO SE CREAN USUARIO
-		/*User diego = new User();
-		diego.setUsername("diego");
+	    User diego = new User();
+		/*diego.setUsername("diego");
 		diego.setPassword(bcpe.encode("diego"));	
 		diego.setSegment(Segment.CUSTOMER);
 		diego.setIdSegment(1);

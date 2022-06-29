@@ -18,7 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
 	
-	@Bean
+	@Bean  
 	PasswordEncoder passwordEnconder() {
 		return new BCryptPasswordEncoder();
 	}
@@ -45,6 +45,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.and()
 				.formLogin();
 	}
-	
 	
 }
