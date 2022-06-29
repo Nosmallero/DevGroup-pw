@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+<meta charset="utf-8">
+<meta charset="ISO-8859-1">
+
+<title>Support</title>
+
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main class="container">
+	
+		<section>
+			<div>
+				<div class="row text-center mt-5">
+					<div>
+						<div class="fw-bold fs-1">¿Cuales son tus preguntas?</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col card text-center ms-5 me-5 mb-3 mt-5"
+					style="border-radius: 1em">
+					<div class="card-header text-start fs-2 text-center" style="background-color: white">Preguntas
+						Frecuentes</div>
+					<div class="card-body">
+						<table class="table table-bordered fs-5">
+							<tbody>
+								<tr>
+									<td>¿Cómo realizo los pagos?</td>
+
+								</tr>
+								<tr>
+									<td>¿Cuántos pedidos he realizado?</td>
+								</tr>
+
+								<tr>
+									<td>¿Qué beneficios tengo?</td>
+								</tr>
+
+								<tr>
+									<td>¿Cómo registro mi negocio?</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+				<div class="col card text-center ms-5 me-5 mb-3 mt-5" style="border-radius: 1em">
+					<div class="card-header text-center fs-2" style="background-color: white">Atención
+						al Cliente</div>
+					<div class="card-body">
+
+						<table class="table fs-5">
+							<tbody>
+								<tr>
+									<td><i class="fa-solid fa-headset"></i></td>
+
+								</tr>
+								<tr>
+									<td><i class="fa-brands fa-whatsapp"></i> 925715841</td>
+								</tr>
+								
+								<tr>
+									<td><i class="fa-solid fa-envelope"></i> faveat@gmail.com</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+			
+			<div class="d-flex justify-content-end">
+			<a th:href="@{/support/new-report}" style="text-decoration: none; color:black"><i class="fa-solid fa-book-open me-2 mb-3" style="font-size: 2em"></i>Reportar</a></div>
+			
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>
