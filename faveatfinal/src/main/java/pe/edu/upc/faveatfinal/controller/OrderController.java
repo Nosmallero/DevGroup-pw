@@ -21,6 +21,7 @@ import pe.edu.upc.faveatfinal.model.entity.Customer;
 import pe.edu.upc.faveatfinal.model.entity.Food;
 import pe.edu.upc.faveatfinal.model.entity.Order;
 import pe.edu.upc.faveatfinal.model.entity.Restaurant;
+import pe.edu.upc.faveatfinal.utils.UserAuthentication;
 
 
 @Controller
@@ -40,11 +41,15 @@ public class OrderController {
 	@Autowired
 	private FoodService foodService;
 	
+	@Autowired
+	private UserAuthentication userAuthentication;
+	
 	@GetMapping  // /orders
 	public String ListOrders(Model model) {
-		
-		try {
-			List<Order> orders = orderService.getAll();
+		if (userAuthentication.isAuthenticated()) {	
+			Integer id = userAuthentication.getIdSegment();
+			try {
+			List<Order> orders = orderService.findByCustomer(id);
 			model.addAttribute("orders", orders);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -52,6 +57,8 @@ public class OrderController {
 		}
 		
 		return "orders/list-orders";
+		}
+		return "redirect:/orders";
 	}
 	
 	
@@ -75,13 +82,24 @@ public class OrderController {
 	
 	@PostMapping("savenew")
 	public String saveOrder(Model model, @ModelAttribute("order") Order order) {
+		if (userAuthentication.isAuthenticated()) {	
+			Integer id = userAuthentication.getIdSegment();
 		try {
-			Order orderSaved = orderService.create(order);
+			
+			if(customerService.existById(id)) {
+				Optional<Customer> optional = customerService.findById(id);
+				order.setCustomer(optional.get());
+				orderService.create(order);
+				return "redirect:/orders";
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "redirect:/orders";
+		}
+		return "";
 	}
 	
 	@GetMapping("{id}/delete")
@@ -98,45 +116,6 @@ public class OrderController {
 		}
 		return "redirect:/orders";
 	}
-	/*
-	@GetMapping("{id}/edit")
-	public String editOrder(Model model, @PathVariable("id") Integer id) {
-		
-		try {
-			if(orderService.existById(id)) {
-				Optional<Order> optional = orderService.findById(id);
-				model.addAttribute("order", optional.get());
-				List<Restaurant> restaurants = restaurantService.getAll();
-				model.addAttribute("restaurants", restaurants);
-				List<Customer> customers = customerService.getAll();
-				model.addAttribute("customers", customers);
-				List<Food> foods = foodService.getAll();
-				model.addAttribute("foods", foods);
-			} else {
-				return "redirect:/orders";
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "orders/edit-order";
-	}
-	
-	@PostMapping("{id}/update")
-	public String updateOrder(Model model, @ModelAttribute("order") Order order, @PathVariable("id") Integer id) {
-		try {
-			if(orderService.existById(id)) {
-				orderService.update(order);
-			} else {
-				return "redirect:/orders";
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "redirect:/orders";
-	}*/
 	
 	
 }

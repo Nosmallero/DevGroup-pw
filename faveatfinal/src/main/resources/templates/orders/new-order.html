@@ -5,7 +5,7 @@
 <title>Nuevo Órden de Pedido</title>
 </head>
 <body>
-<header th:replace="layout/layout :: frag-header"></header>
+	<header th:replace="layout/layout :: frag-header"></header>
 	<div th:replace="/layout/layout :: frag-sidebar"></div>
 	<main>
 
@@ -37,7 +37,7 @@
 							</div>
 						</div>
 
-						
+
 
 						<div class="col-md-4">
 							<label for="dateOrder" class="form-label">Date of
@@ -52,21 +52,27 @@
 								required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
-						
+
 						<div class="col-md-3">
 							<label for="food" class="form-label">Food</label> <select
 								class="form-select" th:field="*{food}" required>
 								<option value="">Elige un comida</option>
-								<option th:each="food : ${foods}"
-									th:value="${food.id}" th:text="${food.name}"></option>
+								<option th:each="food : ${foods}" th:value="${food.id}"
+									th:text="${food.name}"></option>
 							</select>
 							<div class="invalid-feedback">Please select a valid state.
+							</div>
+							
+							<div class="card-footer text-muted">
+								<a class="btn btn-dark" href="@{orders}" role="button"><i
+									class="fas fa-plus-circle"></i></a>
 							</div>
 						</div>
 
 
 						<div class="col-12" style="text-align: center;">
-							<button class="btn" style="background-color:black; color:white" type="submit">
+							<button class="btn" style="background-color: black; color: white"
+								type="submit">
 								<i class="fas fa-save"></i> Save
 							</button>
 						</div>

@@ -34,15 +34,17 @@ public class Customer {
 	private List<Delivery> delivery;
 	
 	@OneToMany(mappedBy = "customer")
-	private List<Reservation> reservation;
-	
 
-	public List<Reservation> getReservation() {
-		return reservation;
+	private List<Order> order;
+	
+	
+	public List<Order> getOrder() {
+		return order;
 	}
 
-	public void setReservation(List<Reservation> reservation) {
-		this.reservation = reservation;
+	public void setOrder(List<Order> order) {
+		this.order = order;
+
 	}
 
 	public Integer getId() {
