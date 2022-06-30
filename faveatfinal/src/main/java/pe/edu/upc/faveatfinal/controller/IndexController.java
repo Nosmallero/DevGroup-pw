@@ -21,14 +21,12 @@ import pe.edu.upc.faveatfinal.utils.UserAuthentication;
 @RequestMapping("/")
 public class IndexController {
 	
+	
 	@Autowired
 	private RestaurantService restaurantService;
 	
 	@Autowired
 	private FoodService foodService;
-	
-	@Autowired
-	private UserAuthentication userAuthentication;
 	
 	@GetMapping("/")
 	public String Search(Model model) {
@@ -48,7 +46,6 @@ public class IndexController {
 		model.addAttribute("food", new Food());
 		
 		try {
-			foods = foodService.findByName(food.getName());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -59,8 +56,5 @@ public class IndexController {
 		return "restaurants/search-food-restaurant";
 
 	}
-	
-	
-
 	
 }

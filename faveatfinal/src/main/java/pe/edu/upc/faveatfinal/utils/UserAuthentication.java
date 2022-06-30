@@ -22,10 +22,10 @@ public class UserAuthentication {
 	
 	// Cambiar los service de acuerdo al segmento que tengan
 	@Autowired
-	private CustomerService studentService;
+	private CustomerService customerService;
 	
 	@Autowired
-	private RestaurantOwnerService teacherService;
+	private RestaurantOwnerService restaurantownerService;
 	
 	public boolean isAuthenticated() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -46,15 +46,15 @@ public class UserAuthentication {
 				
 				// Para el segmento 1: Cambiar STUDENT por su segmento
 				if (myUserDetails.getSegment().equals(Segment.CUSTOMER)) {
-					if (studentService.existById(myUserDetails.getIdSegment())) {
-						Optional<Customer> optional = studentService.findById(myUserDetails.getIdSegment());
+					if (customerService.existById(myUserDetails.getIdSegment())) {
+						Optional<Customer> optional = customerService.findById(myUserDetails.getIdSegment());
 						model.addAttribute("customer", optional.get());
 					}					
 				} 
 				// Para el segmento 2: Cambiar TEACHER por su segmento
 				else if (myUserDetails.getSegment().equals(Segment.RESTAURANTOWNER)) {
-					if (teacherService.existById(myUserDetails.getIdSegment())) {
-						Optional<RestaurantOwner> optional = teacherService.findById(myUserDetails.getIdSegment());
+					if (restaurantownerService.existById(myUserDetails.getIdSegment())) {
+						Optional<RestaurantOwner> optional = restaurantownerService.findById(myUserDetails.getIdSegment());
 						model.addAttribute("teacher", optional.get());
 					}
 				}
