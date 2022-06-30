@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: frag-head">
+<meta charset="ISO-8859-1">
+<title>Report</title>
+</head>
+<body>
+	<header th:replace="/layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
+		<section>
+
+
+			<div class="container px-4 py-5" id="hanging-icons"
+				th:each="report : ${reports}">
+				<div class="row d-flex justify-content-center">
+					<div class="card mb-3 mx-5 mt-5 mb-5 col-6"
+						style="max-width: 540px;">
+						<div class="row g-1">
+							<div class="col-md-8" style="width: 18rem;">
+								<div class="card-body">
+									<div class="fw-bold">Nombre del Cliente:</div>
+									<h5 class="card-title" th:text=${report.fullName}></h5>
+									<div class="fw-bold">Correo del Cliente:</div>
+									<h5 class="card-title" th:text=${report.email}></h5>
+									<div class="fw-bold">Fecha de Reporte:</div>
+									<p class="card-text" th:text=${report.dateReport}></p>
+									<div class="fw-bold">Detalle:</div>
+									<p class="card-text" th:text=${report.claimDetail}></p>
+
+								</div>
+								<a class="btn mb-2" th:href="@{'/support/' + ${report.id} + '/delete'}"
+									style="background-color: #130d21; color: white; text-decoration: none"><i
+									class="fa-solid fa-plus"></i> Verificar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+	</main>
+	<footer th:replace="/layout/layout :: frag-footer"></footer>
+</body>
+</html>

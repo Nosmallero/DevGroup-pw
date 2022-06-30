@@ -25,9 +25,32 @@
 		  </div>
 		  <div class="card-body" style="text-align: left;">
 		  
-			<form th:action="@{/reports/savenew}" th:object="${report}" method="post" class="row g-3 needs-validation" novalidate>
+			<form th:action="@{/support/savenew}" th:object="${report}" method="post" class="row g-3 needs-validation" novalidate>
 			
 			
+				<div class="col-md-4">
+				    <label for="fullName" class="form-label">Name</label>
+				    <input type="text" class="form-control" th:field="*{fullName}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+				
+				<div class="col-md-4">
+				    <label for="email" class="form-label">Email</label>
+				    <input type="text" class="form-control" th:field="*{email}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+				
+				<div class="col-md-4">
+				    <label for="address" class="form-label">Address</label>
+				    <input type="text" class="form-control" th:field="*{address}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
 				
 				<div class="col-md-4">
 							<label for="dateReport" class="form-label">Date
@@ -44,14 +67,6 @@
 				    </div>
 				</div>
 				
-				<div class="col-md-4">
-				    <label for="claimDetail" class="form-label">Claim Detail</label>
-				    <input type="text" class="form-control" th:field="*{claimDetail}" required>
-				    <div class="valid-feedback">
-				      Looks good!
-				    </div>
-				</div>
-				
 				<div class="col-md-3">
 					<label for="restaurant" class="form-label">Restaurant</label>
 				    <select class="form-select" th:field="*{restaurant}" required>
@@ -63,6 +78,14 @@
 				      Please select a valid state.
 				    </div>
 				  </div>
+				
+				<div class="col-md-4">
+				    <label for="claimDetail" class="form-label">Claim Detail</label>
+				    <input type="text" class="form-control" th:field="*{claimDetail}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
 				
 				 
 			  <div class="col-12" style="text-align: center;">
