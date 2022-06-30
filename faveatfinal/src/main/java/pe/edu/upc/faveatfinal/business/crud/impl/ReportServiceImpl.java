@@ -21,9 +21,4 @@ public class ReportServiceImpl implements ReportService{
 		// TODO Auto-generated method stub
 		return this.reportRepository;
 	}
-	@Override
-	public List<Report> findByLastName(String lastName) throws Exception {
-		// TODO Auto-generated method stub
-		return this.reportRepository.findByLastName(lastName);
-	}
 }
