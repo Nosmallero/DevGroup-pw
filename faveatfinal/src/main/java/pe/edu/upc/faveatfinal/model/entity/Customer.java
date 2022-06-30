@@ -2,13 +2,15 @@ package pe.edu.upc.faveatfinal.model.entity;
 
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "customers", indexes = {@Index(columnList = "last_name", name = "customer_index_last_name")})
@@ -28,7 +30,8 @@ public class Customer {
 	@Column(name = "address", length = 100, nullable = false )
 	private String address;
 	
-	
+	@OneToMany(mappedBy = "customer")
+	private List<Delivery> delivery;
 	
 
 	public Integer getId() {
@@ -77,6 +80,14 @@ public class Customer {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public List<Delivery> getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(List<Delivery> delivery) {
+		this.delivery = delivery;
 	}
 
 	

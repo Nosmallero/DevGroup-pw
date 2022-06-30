@@ -13,12 +13,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import pe.edu.upc.faveatfinal.business.crud.CreditCardService;
+import pe.edu.upc.faveatfinal.business.crud.CustomerService;
 import pe.edu.upc.faveatfinal.business.crud.DeliveryManService;
 import pe.edu.upc.faveatfinal.business.crud.DeliveryService;
 import pe.edu.upc.faveatfinal.business.crud.FoodService;
+import pe.edu.upc.faveatfinal.business.crud.OrderService;
+import pe.edu.upc.faveatfinal.model.entity.CreditCard;
+import pe.edu.upc.faveatfinal.model.entity.Customer;
 import pe.edu.upc.faveatfinal.model.entity.Delivery;
 import pe.edu.upc.faveatfinal.model.entity.DeliveryMan;
 import pe.edu.upc.faveatfinal.model.entity.Food;
+import pe.edu.upc.faveatfinal.model.entity.Order;
+import pe.edu.upc.faveatfinal.utils.UserAuthentication;
 
 
 
@@ -34,19 +41,33 @@ public class DeliveryController {
 	private DeliveryManService deliveryManService;
 	
 	@Autowired
-	private FoodService foodService;
+	private OrderService orderService;
+	
+	@Autowired
+	private CreditCardService creditCardService;
+	
+	@Autowired
+	private CustomerService customerService;
+	
+	@Autowired
+	private UserAuthentication userAuthentication;
+	
+	
 	
 	@GetMapping
-	public String listDelivery(Model model) {
-		
+	public String getBill(Model model) {
+		if (userAuthentication.isAuthenticated()) {	
+			Integer id = userAuthentication.getIdSegment();
 		try {
-			List<Delivery> deliverys = deliveryService.getAll();
+			List<Delivery> deliverys = deliveryService.findByCustomer(id);
 			model.addAttribute("deliverys", deliverys);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "deliverys/list-deliverys";
+		}
+		return "redirect:/deliverys";
 	}
 	
 	@GetMapping("new")
@@ -56,8 +77,10 @@ public class DeliveryController {
 		try {
 			List<DeliveryMan> deliverymans = deliveryManService.getAll();
 			model.addAttribute("deliverymans", deliverymans);
-			List<Food> foods = foodService.getAll();
-			model.addAttribute("foods", foods);
+			List<Order> orders = orderService.getAll();
+			model.addAttribute("orders", orders);
+			List<CreditCard> creditCards = creditCardService.getAll();
+			model.addAttribute("creditCards", creditCards);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,15 +90,23 @@ public class DeliveryController {
 	
 	@PostMapping("savenew")
 	public String saveDelivery(Model model, @ModelAttribute("delivery") Delivery delivery) {
-		try {
-			Delivery deliverySaved = deliveryService.create(delivery);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (userAuthentication.isAuthenticated()) {	
+			Integer id = userAuthentication.getIdSegment();
+			try {
+				if(customerService.existById(id)) {
+					Optional<Customer> optional = customerService.findById(id);
+					delivery.setCustomer(optional.get());
+					deliveryService.create(delivery);
+					return "redirect:/deliverys";
+				}
+					
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return "redirect:/deliverys";
 	}
-	
 	@GetMapping("{id}/edit")
 	public String editDelivery(Model model, @PathVariable("id") Integer id) {
 		
@@ -85,8 +116,10 @@ public class DeliveryController {
 				model.addAttribute("delivery", optional.get());
 				List<DeliveryMan> deliverymans = deliveryManService.getAll();
 				model.addAttribute("deliverymans", deliverymans);
-				List<Food> foods = foodService.getAll();
-				model.addAttribute("foods", foods);
+				List<Order> orders = orderService.getAll();
+				model.addAttribute("orders", orders);
+				List<CreditCard> creditCards = creditCardService.getAll();
+				model.addAttribute("creditCards", creditCards);
 			} else {
 				return "redirect:/deliverys";
 			}
