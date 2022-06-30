@@ -33,6 +33,9 @@ public class Customer {
 	@OneToMany(mappedBy = "customer")
 	private List<Delivery> delivery;
 	
+	@OneToMany(mappedBy = "customer")
+	private List<Order> order;
+	
 
 	public Integer getId() {
 		return id;
