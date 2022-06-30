@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: frag-head">
+	<meta charset="ISO-8859-1">
+	<title>Insert Report</title>
+</head>
+<body>
+	<header th:insert="layout/layout :: frag-header"></header>
+	<div th:replace="/layout/layout :: frag-sidebar"></div>
+	<main>
+	
+	<section class ="section">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/reports}"> Report</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">Create</li>
+		  </ol>
+		</nav>
+		
+		
+		<div class="card text-center">
+		  <div class="card-header">
+		    Create Report
+		  </div>
+		  <div class="card-body" style="text-align: left;">
+		  
+			<form th:action="@{/reports/savenew}" th:object="${report}" method="post" class="row g-3 needs-validation" novalidate>
+			
+			
+				
+				<div class="col-md-4">
+							<label for="dateReport" class="form-label">Date
+								</label> <input type="date" class="form-control"
+								th:field="*{dateReport}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+				
+				<div class="col-md-4">
+				    <label for="dni" class="form-label">DNI</label>
+				    <input type="text" class="form-control" th:field="*{dni}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+				
+				<div class="col-md-4">
+				    <label for="claimDetail" class="form-label">Claim Detail</label>
+				    <input type="text" class="form-control" th:field="*{claimDetail}" required>
+				    <div class="valid-feedback">
+				      Looks good!
+				    </div>
+				</div>
+				
+				<div class="col-md-3">
+					<label for="restaurant" class="form-label">Restaurant</label>
+				    <select class="form-select" th:field="*{restaurant}" required>
+				      <option value="">Elige un restaurante</option>
+				      <option th:each="restaurant : ${restaurants}" 
+				      	th:value="${restaurant.id}" th:text="${restaurant.name_restaurant}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+				
+				 
+			  <div class="col-12" style="text-align: center;">
+			    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Send</button>
+			  </div>
+			</form>
+		  
+		  </div>
+		  
+		</div>
+	</section>
+	
+	</main>
+	<footer th:replace="layout/layout :: frag-footer"></footer>
+</body>
+</html>

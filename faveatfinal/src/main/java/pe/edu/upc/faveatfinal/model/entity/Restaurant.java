@@ -61,140 +61,123 @@ public class Restaurant {
 	
 	@OneToMany(mappedBy = "restaurant")
 	private List<Reservation> reservation;
+	
+	@OneToMany(mappedBy = "restaurant")
+	private List<Report> reports;
+	
+	//Agregar relacion ManyToOne con RestaurantOwner
 
 	public Integer getId() {
 		return id;
 	}
 
-
-
-	public List<Reservation> getReservation() {
-		return reservation;
-	}
-
-
-
-	public void setReservation(List<Reservation> reservation) {
-		this.reservation = reservation;
-	}
-
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public Category getCategoryId() {
 		return categoryId;
 	}
 
-
 	public void setCategoryId(Category categoryId) {
 		this.categoryId = categoryId;
 	}
-
 
 	public String getName_restaurant() {
 		return name_restaurant;
 	}
 
-
 	public void setName_restaurant(String name_restaurant) {
 		this.name_restaurant = name_restaurant;
 	}
-
 
 	public String getLocation() {
 		return location;
 	}
 
-
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
 
 	public Integer getCapacity() {
 		return capacity;
 	}
 
-
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
 	}
-
 
 	public String getPhone() {
 		return phone;
 	}
 
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 
 	public String getProtocol() {
 		return protocol;
 	}
 
-
 	public void setProtocol(String protocol) {
 		this.protocol = protocol;
 	}
-
 
 	public String getServiceStart() {
 		return serviceStart;
 	}
 
-
 	public void setServiceStart(String serviceStart) {
 		this.serviceStart = serviceStart;
 	}
-
 
 	public String getServiceEnd() {
 		return serviceEnd;
 	}
 
-
 	public void setServiceEnd(String serviceEnd) {
 		this.serviceEnd = serviceEnd;
 	}
-
-
-	public Integer getQualification() {
-		return qualification;
-	}
-
-
-	public void setQualification(Integer qualification) {
-		this.qualification = qualification;
-	}
-
 
 	public String getImage() {
 		return image;
 	}
 
-
 	public void setImage(String image) {
 		this.image = image;
 	}
 
+	public Integer getQualification() {
+		return qualification;
+	}
+
+	public void setQualification(Integer qualification) {
+		this.qualification = qualification;
+	}
 
 	public List<MenuRestaurant> getMenuRestaurant() {
 		return menuRestaurant;
 	}
 
-
 	public void setMenuRestaurant(List<MenuRestaurant> menuRestaurant) {
 		this.menuRestaurant = menuRestaurant;
 	}
-	
-	
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
+
+	public List<Report> getReports() {
+		return reports;
+	}
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
 
 }
 

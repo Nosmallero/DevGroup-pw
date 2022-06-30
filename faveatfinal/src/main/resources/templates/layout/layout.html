@@ -105,13 +105,13 @@ body {
 					style="background-color: #130d21; color: white"><i
 					class="fa-solid fa-utensils"></i> Restaurantes</a> <a
 					class="list-group-item list-group-item-action  p-3" href="#!"
-					style="background-color: #130d21; color: white"><i
+					style="background-color: #130d21; color: white" sec:authorize="hasRole('ROLE_CUSTOMER')"><i
 					class="fa-solid fa-bag-shopping"></i> Mis Pedidos</a> <a
 					class="list-group-item list-group-item-action p-3" href="#!"
 					style="background-color: #130d21; color: white"><i
 					class="fa-solid fa-cart-shopping"></i> Carrito</a> <a
 					class="list-group-item list-group-item-action  p-3" href="#!"
-					style="background-color: #130d21; color: white"><i
+					style="background-color: #130d21; color: white" sec:authorize="hasRole('ROLE_RESTAURANTOWNER')"><i
 					class="fa-solid fa-building"></i> Mi Restaurante</a> <a
 					class="list-group-item list-group-item-action p-3"
 					th:href="@{/protocolo}"

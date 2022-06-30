@@ -22,6 +22,9 @@ public class RestaurantOwner {
 	private String lastName;
 	@Column(name = "phone", length = 9, nullable = false )
 	private String phone;
+	
+	//Agregar relacion OneToMany con Restaurant
+	
 	public Integer getId() {
 		return id;
 	}
