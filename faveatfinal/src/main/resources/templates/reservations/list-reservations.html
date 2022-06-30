@@ -8,15 +8,25 @@
 	<header th:replace="/layout/layout :: frag-header"></header>
 	<div th:replace="/layout/layout :: frag-sidebar"></div>
 	<main>
+	
 		<section>
 			<nav aria-label="breadcrumb" class="mt-3 mx-5">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#"> Home</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Reservations</li>
+					<li class="breadcrumb-item active" aria-current="page">Bill Reservations</li>
 				</ol>
 			</nav>
+			
 			<div class="card text-center margin-20">
 				<div class="card-body">
+				
+				<div class="card-header">Mis Facturas de Reservas</div>
+				<!--  div class="card-footer text-muted text-end">
+						<a class="btn" style="background-color: red; color: white"
+							th:href="@{/reservations/new}" role="button"> <i class="fas fa-plus"></i>
+							Realizar nueva Reserva
+						</a>
+				</div-->
 
 					<h2 class="h3 mb-4 text-gray-800">Reservations</h2>
 					<div class="card-footer text-muted text-end">
@@ -26,23 +36,82 @@
 						</a>
 					</div>
 					
+					
 					<div class="row">
 						<div th:each="reservation : ${reservations}" class="col-sm-6">
 							<div class="card" style="margin-bottom: 25px;">
 								<div class="card-body">
-									<h5 th:text="${reservation.typeReservation}" class="card-title">Tipo de Reservacion</h5>
-									<p th:text="${'Start Day: ' + reservation.dateStartReservation}" class="card-text"></p>
-									<p th:text="${'End Day: ' + reservation.dateEndReservation}" class="card-text"></p>
-									<a class="btn btn-danger"
-										th:href="@{'/reservations/' + ${reservation.reservationId} + '/del'}"
-										role="button"> <i class="fas fa-trash-alt"></i> Delete Reservation
+								
+								 <a href="/" class=""
+								style="font-family: 'Caveat Brush', cursive; color: rgb(0, 0, 0); text-decoration: none">
+								<img class="logo-sidebar" th:src="@{/img/LogoOficial.png}"
+								width="85em" height="85em" alt="" />
+								
+								<div style="color:black" class="card-body">
+								<h5 class="card-title" th:text="${reservation.restaurant.name_restaurant}">Name</h5>
+								<p th:text="${reservation.restaurant.location}"></p>	
+								<p>Lima</p>	
+								<h4>FACTURA DE RESERVACIÓN</h4>
+								
+								<p>Tipo   : RESERVE</p>
+								
+								<h5 class="card-title" th:text="${reservation.restaurant.name_restaurant}">Name</h5>
+								<p th:text="${reservation.reservationPayment.nameReservation}"></p>	
+								<h4></h4>
+								
+								<p>Tipo de pago  : Tarjeta</p>								
+								
+							</a>
+									<h5 th:text="${'PRECIO: S/. ' + reservation.reservationPayment.paymentAmount}" class="card-title"></h5>									
+									<p th:text="${'Start Day Reservation: ' + reservation.dateStartReservation}" class="card-text"></p>
+									<p th:text="${'End Day Reservation: ' + reservation.dateEndReservation}" class="card-text"></p>
+								 <div class="text-center"><img th:src="@{/img/Commons_QR_code.png}" width="100em" height="100em"></div>
+									
+									<a class="btn btn-success"
+										th:href="@{'/reservations/' + ${reservation.id} + '/del'}"
+										role="button"><i class="fas fa-print"></i>  PRINT
 									</a>
 								</div>
 							</div>
 						</div>
 					</div>
+					
+					<!--table class="table">
+				  <thead>
+				    <tr class="table-danger">
+				      <th scope="col">#</th>
+				      <th scope="col">typeReservation</th>
+				      <th scope="col">dateStartReservation</th>
+				      <th scope="col">dateEndReservation</th>
+				       <th scope="col">reservationPayment</th>
+				      <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="reservation : ${reservations}">
+				      <th scope="row" th:text="${reservation.id}"></th>
+				      <td th:text="${reservation.typeReservation}"></td>
+				      <td th:text="${reservation.dateStartReservation}"></td>
+				      <td th:text="${reservation.dateEndReservation}"></td>
+				      <td th:text="${reservation.reservationPayment.paymentAmount}"></td>
+				      
+				      <td>
+				      <a class="btn btn-warning" th:href="@{'/reservations/' + ${reservation.id} + '/edit'}" role="button"><i class="fas fa-cog"></i></a>
+				      <a class="btn btn-danger" th:href="@{'/reservations/' + ${reservation.id} + '/delete'}" role="button"><i class="fas fa-trash"></i></a>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table-->
+					
+					</div>
+				<div class="card-footer text-muted">
+					<!--  a class="btn btn-danger"
+					th:href="@{'/reservations/' + ${reservation.id} + '/delete'}"
+					role="button"><i class="fas fa-times-circle"></i> Cancel Reserve</a-->
+					
 				</div>
 			</div>
+		     <!-- a class="btn btn-warning"role="button" style="text-align: center; margin-left:650px;"> <i class="fas fa-star"></i> Calificar Restaurante</a-->
 		</section>
 
 	</main>

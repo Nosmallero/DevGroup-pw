@@ -15,7 +15,7 @@
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item"><a th:href="@{/reservations}">Reservations</a></li>
-					<li class="breadcrumb-item active" aria-current="page">New</li>
+					<li class="breadcrumb-item active" aria-current="page">Create</li>
 				</ol>
 			</nav>
 
@@ -23,29 +23,65 @@
 				<div class="card-header">Reservations</div>
 				<div class="card-body" style="text-align: left;">
 
-					<form th:action="@{/reservations/savenew}" th:object="${reservation}"
-						method="post" class="row g-3 needs-validation" novalidate>
+
+
+					<form th:action="@{/reservations/savenew}"
+						th:object="${reservation}" method="post"
+						class="row g-3 needs-validation" novalidate>
+						
 						<div class="col-md-3">
-							<label for="typeReservation" class="form-label">Reservations Type</label> <input
-								type="text" class="form-control" th:field="*{typeReservation}" required>
-							<div class="valid-feedback">Looks good!</div>
-						</div>
-						<div class="col-md-3">
-							<label for="dateStartReservation" class="form-label">Reservations Start Day</label> <input
-								type="text" class="form-control" th:field="*{dateStartReservation}"
-								required>
-							<div class="valid-feedback">Looks good!</div>
+							<label for="restaurant" class="form-label">Restaurant</label> <select
+								class="form-select" th:field="*{restaurant}" required>
+								<option value="">Elige un restaurante</option>
+								<option th:each="restaurant : ${restaurants}"
+									th:value="${restaurant.id}"
+									th:text="${restaurant.name_restaurant}"></option>
+							</select>
+							<div class="invalid-feedback">Please select a valid state.
+							</div>
 						</div>
 						
 						<div class="col-md-3">
-							<label for="dateEndReservation" class="form-label">Reservations End Day</label> <input
-								type="text" class="form-control" th:field="*{dateEndReservation}"
-								required>
+				    <label for="reservationPayment" class="form-label">Tables Numbers</label>
+				    <select class="form-select" th:field="*{reservationPayment}" required>
+				      <option value="">Escoge tarjeta con que efectuar el pago</option>
+				      <option th:each="reservationPayment : ${reservationPayments}" th:value="${reservationPayment.id}" th:text="${reservationPayment.nameReservation}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+						
+						<div class="col-md-3">
+				    <label for="creditCard" class="form-label">Tarjeta de Credito</label>
+				    <select class="form-select" th:field="*{creditCard}" required>
+				      <option value="">Escoge tarjeta con que efectuar el pago</option>
+				      <option th:each="creditCard : ${creditCards}" th:value="${creditCard.id}" th:text="${creditCard.typeCard}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+
+						<div class="col-md-4">
+							<label for="dateStartReservation" class="form-label">Date
+								Star</label> <input type="text" class="form-control"
+								th:field="*{dateStartReservation}" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
+
+						<div class="col-md-4">
+							<label for="dateEndReservation" class="form-label">Date
+								End</label> <input type="text" class="form-control"
+								th:field="*{dateEndReservation}" required>
+							<div class="valid-feedback">Looks good!</div>
+						</div>
+
+
 						<div class="col-12" style="text-align: center;">
-							<button class="btn" style="background-color:black; color:white" type="submit">
-								<i class="fas fa-save"></i> Save
+							<button class="btn" style="background-color: black; color: white"
+								type="submit">
+								<i class="fas fa-save"></i> Pay Reserve
 							</button>
 						</div>
 					</form>
