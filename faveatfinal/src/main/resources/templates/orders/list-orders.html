@@ -43,9 +43,7 @@
 										<p class="card-text">
 											<i class="fas fa-date"></i> Restaurant: <span
 												th:text="${order.restaurant.name_restaurant}"></span>
-										<p class="card-text">
-											<i class="far fa-person-card"></i> Customer: <span
-												th:text="${order.customer.firstName} + ${order.customer.lastName}"></span>
+										
 										<p class="card-text">
 											<i class="fas fa-date"></i> Date: <span
 												th:text="${order.dateOrder}"></span>
@@ -64,6 +62,9 @@
 												
 											<br>
 											<br> 
+											<a class="btn btn-primary"
+												role="button"><i class="fas fa-holding-usd"></i>
+												Realizar Delivery </a>
 											<a class="btn btn-primary"
 												role="button"><i class="fas fa-holding-usd"></i>
 												Reservar </a>

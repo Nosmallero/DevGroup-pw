@@ -37,16 +37,7 @@
 							</div>
 						</div>
 
-						<div class="col-md-3">
-							<label for="customer" class="form-label">Customer</label> <select
-								class="form-select" th:field="*{customer}" required>
-								<option value="">Elige un cliente</option>
-								<option th:each="customer : ${customers}"
-									th:value="${customer.id}" th:text="${customer.lastName}"></option>
-							</select>
-							<div class="invalid-feedback">Please select a valid state.
-							</div>
-						</div>
+						
 
 						<div class="col-md-4">
 							<label for="dateOrder" class="form-label">Date of
