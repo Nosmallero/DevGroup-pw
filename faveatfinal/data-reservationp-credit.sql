@@ -1,9 +1,9 @@
-INSERT INTO credit_card(id, number_card, security_Code, type_card, expiration_date) VALUES
-	(1, '5551779059069436', 123, 'Banco de la nacion','12Nov2022'),
-	(2, '6661779059069436', 322, 'BCP', '07Sept2022'),
-	(3, '7771779059069436', 783, 'Scotiabank', '14Dic2022'),
-	(4, '8888179059069436', 783, 'Interbank', '17Oct2022'),
-	(5, '9999177059069436', 783, 'Paypal', '19Ago2022');
+INSERT INTO credit_card(creditcard_id, number_card, security_Code, type_card, expiration_date) VALUES
+	(2, '5551779059069436', 123, 'Banco de la nacion','12Nov2022'),
+	(3, '6661779059069436', 322, 'BCP', '07Sept2022'),
+	(4, '7771779059069436', 783, 'Scotiabank', '14Dic2022'),
+	(5, '8888179059069436', 783, 'Interbank', '17Oct2022'),
+	(6, '9999177059069436', 783, 'Paypal', '19Ago2022');
 	
 INSERT INTO reservation_payment(id, name_reservation, payment_amount, credit_card_id) VALUES
 	(1, 'Reserva de 1 mesa', 20, 5),

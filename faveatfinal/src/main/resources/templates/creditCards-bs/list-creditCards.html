@@ -47,12 +47,13 @@
 					       <p><i class="fas fa-lock"></i> El Codigo de Seguridad es: <span th:text="${creditCard.securityCode}"></span>
 					       <p><i class="fas fa-calendar-alt"></i> La Fecha de Expiracion es: <span th:text="${creditCard.expirationDate}"></span>
 					        </p>
-					       <a class="btn" style="background-color: rgb(3, 30, 78); color: white"
+					     
+					   	  <a class="btn" style="background-color: rgb(3, 30, 78); color: white"
 									th:href="@{'/creditCards-bs/' + ${creditCard.id} + '/edit'}"
 									role="button"><i class="fas fa-cog"></i> Edit </a> 
-									<a class="btn btn-danger"
-									th:href="@{'/creditCards-bs/' + ${creditCard.id} + '/del'}"
-									role="button"><i class="fas fa-times-circle"></i> Delete </a>
+							<!--		<a class="btn btn-danger"
+							 	th:href="@{'/creditCards-bs/' + ${creditCard.id} + '/del'}"
+									role="button"><i class="fas fa-times-circle"></i> Delete </a>-->
 					      </div>
 					    </div>
 					  </div>
