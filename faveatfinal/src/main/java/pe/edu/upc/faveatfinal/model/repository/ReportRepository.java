@@ -9,5 +9,4 @@ import pe.edu.upc.faveatfinal.model.entity.Report;
 
 @Repository
 public interface ReportRepository extends JpaRepository<Report, Integer>{
-	List<Report> findByLastName(String lastName) throws Exception;
 }
