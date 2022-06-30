@@ -21,46 +21,20 @@ import pe.edu.upc.faveatfinal.utils.UserAuthentication;
 @RequestMapping("/")
 public class IndexController {
 	
-	@Autowired
-	private RestaurantService restaurantService;
-	
-	@Autowired
-	private FoodService foodService;
 	
 	@Autowired
 	private UserAuthentication userAuthentication;
 	
+	
 	@GetMapping("/")
-	public String Search(Model model) {
-		try {
-			List<Food> foods = foodService.getAll();
-			model.addAttribute("food", new Food());
-		} catch (Exception e) {
-			model.addAttribute("error", e.getMessage());
-		}
-		return "/example";
-	}
-	
-	@PostMapping("/find_food")
-	public String findByFood(Model model, @ModelAttribute("food") Food food) {
+	public String getIndex(Model model) {	
 		
-		List<Food> foods = new ArrayList<>();
-		model.addAttribute("food", new Food());
-		
-		try {
-			foods = foodService.findByName(food.getName());
-		} catch (Exception e) {
-			// TODO: handle exception
+		if (userAuthentication.isAuthenticated()) {	// Enviar los datos del Segmento al html
+			userAuthentication.getSegment(model);
 		}
-
-		model.addAttribute("foodSearch", food);
-		model.addAttribute("foods", foods);
-
-		return "restaurants/search-food-restaurant";
-
+				
+		return "/index";
 	}
-	
-	
 
 	
 }
