@@ -65,10 +65,22 @@ public class Restaurant {
 	@OneToMany(mappedBy = "restaurant")
 	private List<Report> reports;
 	
+	@ManyToOne
+	@JoinColumn(name = "restaurantOwner_id")
+	private RestaurantOwner restaurantOwner;
+	
 	//Agregar relacion ManyToOne con RestaurantOwner
 
 	public Integer getId() {
 		return id;
+	}
+
+	public RestaurantOwner getRestaurantOwner() {
+		return restaurantOwner;
+	}
+
+	public void setRestaurantOwner(RestaurantOwner restaurantOwner) {
+		this.restaurantOwner = restaurantOwner;
 	}
 
 	public void setId(Integer id) {

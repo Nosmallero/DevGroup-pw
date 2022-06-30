@@ -1,11 +1,15 @@
 package pe.edu.upc.faveatfinal.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "restaurantOwners", indexes = {@Index(columnList = "first_name", name = "restaurant_owner_index_first_name")})
@@ -23,11 +27,30 @@ public class RestaurantOwner {
 	@Column(name = "phone", length = 9, nullable = false )
 	private String phone;
 	
+	@OneToMany(mappedBy = "restaurantOwner")
+	private List<Restaurant> restaurants;
+	
 	//Agregar relacion OneToMany con Restaurant
+	
+	public RestaurantOwner() {
+		restaurants= new ArrayList<>();
+	}
+	
 	
 	public Integer getId() {
 		return id;
 	}
+	
+	public List<Restaurant> getRestaurants() {
+		return restaurants;
+	}
+
+
+	public void setRestaurants(List<Restaurant> restaurants) {
+		this.restaurants = restaurants;
+	}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
