@@ -2,7 +2,7 @@ INSERT INTO categories(category_id,name_category,type)VALUES
 (1,'Marino','2 tenedores'),
 (2,'Pizzerias','Vegana');
 
-INSERT INTO restaurants(restaurant_id,name_restaurants,locations, capacities, phones,images,start_time,end_time,category_id, restaurantOwner_id)VALUES
+INSERT INTO restaurants(restaurant_id,name_restaurants,locations, capacities, phones,images,start_time,end_time,category_id, restaurant_owner_id)VALUES
 (1,'El Rincon del Pez','Barranca', 65, 980925812,'https://media-cdn.tripadvisor.com/media/photo-p/19/cb/d1/b4/del-m-a-r-a-su-paladar.jpg','09:00','17:00', 1,1),
 (2,'Veggie Pizza','Miraflores', 65, 980925813,'https://bcassetcdn.com/public/blog/wp-content/uploads/2019/09/18094304/vegan-pizzeria.png','14:00','22:00', 1,1);
 

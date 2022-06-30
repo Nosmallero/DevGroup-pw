@@ -33,6 +33,17 @@ public class Customer {
 	@OneToMany(mappedBy = "customer")
 	private List<Delivery> delivery;
 	
+	@OneToMany(mappedBy = "customer")
+	private List<Reservation> reservation;
+	
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
 
 	public Integer getId() {
 		return id;
@@ -90,6 +101,4 @@ public class Customer {
 		this.delivery = delivery;
 	}
 
-	
-	
 }
