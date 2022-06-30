@@ -23,18 +23,38 @@ public class IndexController {
 	
 	
 	@Autowired
-	private UserAuthentication userAuthentication;
+	private RestaurantService restaurantService;
 	
+	@Autowired
+	private FoodService foodService;
 	
 	@GetMapping("/")
-	public String getIndex(Model model) {	
-		
-		if (userAuthentication.isAuthenticated()) {	// Enviar los datos del Segmento al html
-			userAuthentication.getSegment(model);
+	public String Search(Model model) {
+		try {
+			List<Food> foods = foodService.getAll();
+			model.addAttribute("food", new Food());
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
 		}
-				
-		return "/index";
+		return "/example";
 	}
+	
+	@PostMapping("/find_food")
+	public String findByFood(Model model, @ModelAttribute("food") Food food) {
+		
+		List<Food> foods = new ArrayList<>();
+		model.addAttribute("food", new Food());
+		
+		try {
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
+		model.addAttribute("foodSearch", food);
+		model.addAttribute("foods", foods);
+
+		return "restaurants/search-food-restaurant";
+
+	}
 	
 }
