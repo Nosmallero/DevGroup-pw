@@ -21,6 +21,7 @@ import pe.edu.upc.faveatfinal.model.entity.DeliveryPayment;
 import pe.edu.upc.faveatfinal.model.entity.Food;
 import pe.edu.upc.faveatfinal.model.entity.Report;
 import pe.edu.upc.faveatfinal.model.entity.Restaurant;
+import pe.edu.upc.faveatfinal.utils.UserAuthentication;
 
 @Controller
 @RequestMapping("/support")
@@ -32,23 +33,29 @@ public class SupportController {
 	}
 	
 	@Autowired
+    private UserAuthentication userAuthentication;
+	
+	@Autowired
 	private RestaurantService restaurantService;
 	
 	@Autowired
 	private ReportService reportService;
 	
 	@GetMapping("reportList")
-	public String listReport(Model model) {
-		
-		try {
-			List<Report> reports = reportService.getAll();
-			model.addAttribute("reports", reports);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "reports/list-report";
-	}
+    public String getBill(Model model) {
+        if (userAuthentication.isAuthenticated()) {
+            Integer id = userAuthentication.getIdSegment();
+        try {
+            List<Report> reports = reportService.findByRestaurant(id);
+            model.addAttribute("reports", reports);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "reports/list-report";
+        }
+        return "redirect:/reports";
+    }
 	
 	@GetMapping("new-report")
 	public String newReport(Model model)
@@ -90,7 +97,8 @@ public class SupportController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/myRestaurant";
+		return "redirect:/support/reportList";
 	}
+	
 	
 }
