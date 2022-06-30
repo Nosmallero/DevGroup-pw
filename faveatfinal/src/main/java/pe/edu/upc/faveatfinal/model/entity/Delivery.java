@@ -42,6 +42,10 @@ public class Delivery {
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
+	@ManyToOne
+	@JoinColumn(name = "restaurant_id")
+	private Restaurant restaurant;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -97,6 +101,14 @@ public class Delivery {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 
 

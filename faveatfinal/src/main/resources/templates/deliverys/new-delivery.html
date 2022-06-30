@@ -25,6 +25,16 @@
 		  <div class="card-body" style="text-align: left;">
 			<form th:action="@{/deliverys/savenew}" th:object="${delivery}" method="post" class="row g-3 needs-validation" novalidate>
 				  
+				  <div class="col-md-3">
+				    <label for="restaurant" class="form-label">Restaurante</label>
+				    <select class="form-select" th:field="*{restaurant}" required>
+				      <option value="">Restaurante</option>
+				      <option th:each="restaurant : ${restaurants}" th:value="${restaurant.id}" th:text="${restaurant.name_restaurant}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
 				  
 				  <div class="col-md-3">
 				    <label for="order" class="form-label">Orden</label>
