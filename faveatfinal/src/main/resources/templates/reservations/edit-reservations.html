@@ -24,7 +24,7 @@
 				<div class="card-header"></div>
 				<div class="card-body" style="text-align: left;">
 
-					<form th:action="@{'/reservations/' + ${reservation.reservationId} + '/update'}"
+					<form th:action="@{'/reservations/' + ${reservation.id} + '/update'}"
 						th:object="${reservation}" method="post"
 						class="row g-3 needs-validation" novalidate>
 						<div class="col-md-3">

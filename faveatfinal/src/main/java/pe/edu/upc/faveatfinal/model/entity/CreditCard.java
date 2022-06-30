@@ -40,11 +40,22 @@ public class CreditCard {
 	@OneToMany(mappedBy = "creditCard")
 	private List<Delivery> delivery;
 	
+	@OneToMany(mappedBy = "creditCard")
+	private List<Reservation> reservation;
+	
 	
 	/*@OneToMany(mappedBy = "creditCard")
 	private List<DeliveryPayment> deliveryPayments;*/
 	
 	
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
 
 	public Integer getId() {
 		return id;

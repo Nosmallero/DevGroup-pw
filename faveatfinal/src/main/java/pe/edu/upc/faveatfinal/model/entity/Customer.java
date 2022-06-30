@@ -34,6 +34,7 @@ public class Customer {
 	private List<Delivery> delivery;
 	
 	@OneToMany(mappedBy = "customer")
+
 	private List<Order> order;
 	
 	
@@ -43,6 +44,7 @@ public class Customer {
 
 	public void setOrder(List<Order> order) {
 		this.order = order;
+
 	}
 
 	public Integer getId() {
@@ -101,6 +103,4 @@ public class Customer {
 		this.delivery = delivery;
 	}
 
-	
-	
 }

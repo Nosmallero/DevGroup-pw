@@ -18,8 +18,8 @@ public class InitUser implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
-		// ROLE_XXXXX	-> Segmento Objetivo
-		// ACCESS_YYYYY
+		//ROLE_XXXXX	-> Segmento Objetivo
+		//ACCESS_YYYYY
 		
 		// SIEMPRE DEBE DE ESTAR COMENTADO
 		// SOLO SE DEBE DESBLOQUEAR CUANDO SE CREAN USUARIO

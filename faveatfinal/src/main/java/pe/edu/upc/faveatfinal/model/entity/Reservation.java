@@ -1,36 +1,74 @@
 package pe.edu.upc.faveatfinal.model.entity;
 
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "reservation")
+@Table(name = "reservation",
+		indexes = {@Index(columnList = "id" , name = "reservation_index_id")})
+
 public class Reservation {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "reservation_id")
-	private Integer reservationId;
-
-	@Column(name = "type_reservation",length = 200, nullable = false)
-	private String typeReservation;
+	private Integer id;
 	
-	@Column(name = "date_start_reservation",length = 100, nullable = false)
-	private String dateStartReservation;
+	@Column(name = "date_start_reservation", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dateStartReservation;
 	
-	@Column(name = "date_end_reservation",length = 100, nullable = false)
-	private String dateEndReservation;
+	@Column(name = "date_end_reservation", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dateEndReservation;
 	
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
+
+	@ManyToOne
+	@JoinColumn(name = "reservationPayment_id")
+	private ReservationPayment reservationPayment;
 	
+	@ManyToOne
+	@JoinColumn(name = "creditCard_id")
+	private CreditCard creditCard;
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+	
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
+
 	public ReservationPayment getReservationPayment() {
 		return reservationPayment;
 	}
@@ -38,10 +76,6 @@ public class Reservation {
 	public void setReservationPayment(ReservationPayment reservationPayment) {
 		this.reservationPayment = reservationPayment;
 	}
-
-	@ManyToOne
-	@JoinColumn(name = "reservationPayment_id")
-	private ReservationPayment reservationPayment;
 	
 	public Restaurant getRestaurant() {
 		return restaurant;
@@ -51,12 +85,12 @@ public class Reservation {
 		this.restaurant = restaurant;
 	}
 
-	public Integer getReservationId() {
-		return reservationId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setReservationId(Integer reservationId) {
-		this.reservationId = reservationId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Restaurant getRestaurants() {
@@ -67,27 +101,20 @@ public class Reservation {
 		this.restaurant = restaurants;
 	}
 
-	public String getTypeReservation() {
-		return typeReservation;
-	}
-
-	public void setTypeReservation(String typeReservation) {
-		this.typeReservation = typeReservation;
-	}
-
-	public String getDateStartReservation() {
+	public Date getDateStartReservation() {
 		return dateStartReservation;
 	}
 
-	public void setDateStartReservation(String dateStartReservation) {
+	public void setDateStartReservation(Date dateStartReservation) {
 		this.dateStartReservation = dateStartReservation;
 	}
 
-	public String getDateEndReservation() {
+	public Date getDateEndReservation() {
 		return dateEndReservation;
 	}
 
-	public void setDateEndReservation(String dateEndReservation) {
+	public void setDateEndReservation(Date dateEndReservation) {
 		this.dateEndReservation = dateEndReservation;
 	}
+	
 }
