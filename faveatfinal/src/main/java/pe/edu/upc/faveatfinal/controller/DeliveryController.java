@@ -17,14 +17,14 @@ import pe.edu.upc.faveatfinal.business.crud.CreditCardService;
 import pe.edu.upc.faveatfinal.business.crud.CustomerService;
 import pe.edu.upc.faveatfinal.business.crud.DeliveryManService;
 import pe.edu.upc.faveatfinal.business.crud.DeliveryService;
-import pe.edu.upc.faveatfinal.business.crud.FoodService;
 import pe.edu.upc.faveatfinal.business.crud.OrderService;
+import pe.edu.upc.faveatfinal.business.crud.RestaurantService;
 import pe.edu.upc.faveatfinal.model.entity.CreditCard;
 import pe.edu.upc.faveatfinal.model.entity.Customer;
 import pe.edu.upc.faveatfinal.model.entity.Delivery;
 import pe.edu.upc.faveatfinal.model.entity.DeliveryMan;
-import pe.edu.upc.faveatfinal.model.entity.Food;
 import pe.edu.upc.faveatfinal.model.entity.Order;
+import pe.edu.upc.faveatfinal.model.entity.Restaurant;
 import pe.edu.upc.faveatfinal.utils.UserAuthentication;
 
 
@@ -45,6 +45,9 @@ public class DeliveryController {
 	
 	@Autowired
 	private CreditCardService creditCardService;
+	
+	@Autowired
+	private RestaurantService restaurantService;
 	
 	@Autowired
 	private CustomerService customerService;
@@ -70,6 +73,22 @@ public class DeliveryController {
 		return "redirect:/deliverys";
 	}
 	
+	@GetMapping("billListmyrestaurant")
+	public String getBillRestaurant(Model model) {
+		if (userAuthentication.isAuthenticated()) {	
+			Integer id = userAuthentication.getIdSegment();
+		try {
+			List<Delivery> deliverys = deliveryService.findByRestaurant(id);
+			model.addAttribute("deliverys", deliverys);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "deliverys/list-deliverys";
+		}
+		return "redirect:/deliverys";
+	}
+	
 	@GetMapping("new")
 	public String newDelivery(Model model) {
 		Delivery delivery = new Delivery();
@@ -81,6 +100,8 @@ public class DeliveryController {
 			model.addAttribute("orders", orders);
 			List<CreditCard> creditCards = creditCardService.getAll();
 			model.addAttribute("creditCards", creditCards);
+			List<Restaurant> restaurants = restaurantService.getAll();
+			model.addAttribute("restaurants", restaurants);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

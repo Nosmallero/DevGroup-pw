@@ -65,6 +65,9 @@ public class Restaurant {
 	@OneToMany(mappedBy = "restaurant")
 	private List<Report> reports;
 	
+	@OneToMany(mappedBy = "restaurant")
+	private List<Delivery> deliverys;
+	
 	@ManyToOne
 	@JoinColumn(name = "restaurantOwner_id")
 	private RestaurantOwner restaurantOwner;
@@ -191,5 +194,14 @@ public class Restaurant {
 		this.reports = reports;
 	}
 
+	public List<Delivery> getDeliverys() {
+		return deliverys;
+	}
+
+	public void setDeliverys(List<Delivery> deliverys) {
+		this.deliverys = deliverys;
+	}
+
+	
 }
 
