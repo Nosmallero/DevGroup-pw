@@ -15,59 +15,48 @@
 			<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Delivery</li>
+					<li class="breadcrumb-item active" aria-current="page">Boletas de Delivery</li>
 				</ol>
 			</nav>
 			
-			<div class="card text-center">
-				<div class="card-header">Deliverys en curso</div>
-				<div class="card-footer text-muted text-end">
+			<div>
+				<div class="card-header">Mis Boletas de Delivery</div>
+				<!--  div class="card-footer text-muted text-end">
 						<a class="btn" style="background-color: red; color: white"
 							th:href="@{/deliverys/new}" role="button"> <i class="fas fa-plus"></i>
 							Realizar nuevo pedido
 						</a>
-				</div>
-				<div class="card-body">
-					<div class="row">
+				</div-->
+				<div class="card-body" style="justify-content: end;">
+					<div class="row" >
 						<div th:each="delivery : ${deliverys}" class="col-sm-4">
 							<div class="card">
-								<h5 class="card-title" th:text="${delivery.food}">name</h5>
-								<div>
-									<img th:src="${delivery.food.image}"
-										style="width: 300px; height: 200px;"> 
-								</div>
+								
+								
 								<div  class="card-body">
-
-									<div>
-										<div class="container">
-											<div class="container-card">
-												<div class="header-deliveryman">
-													<p class="card-text">
-														El repartidor encargado de traerle la comida es: <span
-															th:text="${delivery.deliveryMan.firstName} + ' ' + ${delivery.deliveryMan.lastName}"></span><br><br>
-														Entregar de propina el monto de <i class="fas fa-money-bill"></i> <span th:text="${(delivery.food.cost) + (delivery.tip)}"></span>
-													</p>
-												</div>
-												<div class="photo-deliveryman">
-													<img th:src="${delivery.deliveryMan.photo}" style="width: 150px; height: 150px;">
-												</div>
-											</div>
-										</div>
-										<p><i class="fas fa-biking"></i> La hora aproximada de entrega es a las <i class="fas fa-clock"></i> <span
-												th:text="${delivery.dateDelivery}"></span>
-										</p>
-										<p>
-											Detalles Extra :  <br> <span th:text="${delivery.description}"></span>
-										</p>
-										<a class="btn btn-danger"
-											th:href="@{'/deliverys/' + ${delivery.id} + '/delete'}"
-											role="button"><i class="fas fa-times-circle"></i> Cancelar Delivery</a>
-									</div>
-
+								<h5 class="card-title" th:text="${delivery.order.restaurant.name_restaurant}">name</h5>
+								<p th:text="${delivery.order.restaurant.location}"></p>	
+								<p>Lima</p>	
+								<h4>BOLETA DE VENTA ELECTRONICA</h4>
+					
+								<p>Tipo   :DELIVERY</p>
+								<p>Tipo de pago  : Tarjeta</p>
+								<p>Repartidor     : <span th:text="${delivery.deliveryMan.firstName} + ' ' + ${delivery.deliveryMan.lastName}"></span></p>
+								<p>Tipo Moneda    :Soles</p>
+								<p>---------------------------------------------------------</p>
+								<p>Producto: <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Total: </span></p>
+								<p>---------------------------------------------------------</p>
+								<p><span th:text="${delivery.order.food.name} + ' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' + ${delivery.order.food.cost}"></span></p>
+								<p>Propina: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;<span th:text="${delivery.tip}"></span></p>
+								<p>---------------------------------------------------------</p>
+								<p>Total a Pagar: &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<span th:text="${(delivery.tip + delivery.order.food.cost)}"></span> soles</p>
+								<div class="text-center"><img th:src="@{/img/Commons_QR_code.png}" width="100em" height="100em"></div>
 								</div>
+								
 							</div>
+							
 						</div>
-
+					
 
 
 
@@ -101,11 +90,14 @@
 
 				</div>
 				<div class="card-footer text-muted">
-					
+					<!--  a class="btn btn-danger"
+											th:href="@{'/deliverys/' + ${delivery.id} + '/delete'}"
+											role="button"><i class="fas fa-times-circle"></i> Cancelar Delivery</a-->
 				</div>
 			</div>
+			<!-- a class="btn btn-warning"role="button" style="text-align: center; margin-left:650px;"> <i class="fas fa-star"></i> Calificar repartidor</a-->
 		</section>
-
+		
 	</main>
 	<footer th:replace="layout/layout :: frag-footer"></footer>
 </body>

@@ -37,14 +37,15 @@
 									<p><i class="fas fa-house"></i> Se encuentra alojado en <span th:text="${deliveryman.address}"></span></p>
 									<p><i class="fas fa-at"></i> Su email de contacto es : <span th:text="${deliveryman.email}"></span></p>
 									<p><i class="fas fa-phone-alt"></i> Su numero de contacto es : <span th:text="${deliveryman.phone}"></span></p>
+									<p><i class="fas fa-star"></i> Puntuacion: <span th:text="${deliveryman.phone}"></span></p>
 									
 									<p></p>
-									<a class="btn btn-warning"
+									<!--  a class="btn btn-warning"
 										th:href="@{'/deliverymans/' + ${deliveryman.id} + '/edit'}"
 										role="button"><i class="fas fa-cog"></i> Edit</a> <a
 										class="btn btn-danger"
 										th:href="@{'/deliverymans/' + ${deliveryman.id} + '/delete'}"
-										role="button"><i class="fas fa-trash"></i> Delete</a>
+										role="button"><i class="fas fa-trash"></i> Delete</a-->
 								</div>
 							</div>
 						</div>

@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: frag-head">
 	<meta charset="ISO-8859-1">
-	<title>New Delivery</title>
+	<title>Pagar pedido</title>
 </head>
 <body>
 	<header th:insert="layout/layout :: frag-header"></header>
@@ -24,6 +24,43 @@
 		  </div>
 		  <div class="card-body" style="text-align: left;">
 			<form th:action="@{/deliverys/savenew}" th:object="${delivery}" method="post" class="row g-3 needs-validation" novalidate>
+				  
+				  
+				  <div class="col-md-3">
+				    <label for="order" class="form-label">Orden</label>
+				    <select class="form-select" th:field="*{order}" required>
+				      <option value="">Escoge tu orden</option>
+				      <option th:each="order : ${orders}" th:value="${order.id}" th:text="${order.food.name}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+				  
+				  <div class="col-md-3">
+				    <label for="deliveryMan" class="form-label">Repartidor</label>
+				    <select class="form-select" th:field="*{deliveryMan}" required>
+				      <option value="">Elige un repartidor</option>
+				      <option th:each="deliveryman : ${deliverymans}" th:value="${deliveryman.id}" th:text="${deliveryman.firstName} + ' ' + ${deliveryman.lastName}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+					  
+				
+				  
+				  <div class="col-md-3">
+				    <label for="creditCard" class="form-label">Tarjeta de Credito</label>
+				    <select class="form-select" th:field="*{creditCard}" required>
+				      <option value="">Escoge tarjeta con que efectuar el pago</option>
+				      <option th:each="creditCard : ${creditCards}" th:value="${creditCard.id}" th:text="${creditCard.typeCard}"></option>
+				    </select>
+				    <div class="invalid-feedback">
+				      Please select a valid state.
+				    </div>
+				  </div>
+				  
 				  <div class="col-md-2">
 				    <label for="tip" class="form-label">Tip</label>
 				    <input type="text" class="form-control" th:field="*{tip}" required>
@@ -38,39 +75,13 @@
 				      Looks good!
 				    </div>
 				  </div>
-				   <div class="col-md-4">
-				    <label for="dateDelivery" class="form-label">Date of Delivery</label>
-				    <input type="text" class="form-control" th:field="*{dateDelivery}" required>
-				    <div class="valid-feedback">
-				      Looks good!
-				    </div>
-				  </div>
+				   
 				  
 				  
-				  <div class="col-md-3">
-				    <label for="deliveryMan" class="form-label"></label>
-				    <select class="form-select" th:field="*{deliveryMan}" required>
-				      <option value="">Elige un repartidor</option>
-				      <option th:each="deliveryman : ${deliverymans}" th:value="${deliveryman.id}" th:text="${deliveryman.firstName} + ' ' + ${deliveryman.lastName}"></option>
-				    </select>
-				    <div class="invalid-feedback">
-				      Please select a valid state.
-				    </div>
-				  </div>
-					  
-				<div class="col-md-3">
-				    <label for="food" class="form-label"></label>
-				    <select class="form-select" th:field="*{food}" required>
-				      <option value="">Elige una comida</option>
-				      <option th:each="food : ${foods}" th:value="${food.id}" th:text="${food.name}"></option>
-				    </select>
-				    <div class="invalid-feedback">
-				      Please select a valid state.
-				    </div>
-				  </div>
+				  
 				  	  
 				  <div class="col-12" style="text-align: center;">
-				    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Create</button>
+				    <button class="btn btn-primary" type="submit"><i class="fas fa-credit-card"></i> Realizar pago</button>
 				  </div>
 				</form>
 						  

@@ -18,6 +18,7 @@ import javax.persistence.Table;
 public class CreditCard {
 	
 	@Id
+	@Column(name="creditcard_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
@@ -37,7 +38,13 @@ public class CreditCard {
 	private List<ReservationPayment> reservationPayments;
 	
 	@OneToMany(mappedBy = "creditCard")
-	private List<DeliveryPayment> deliveryPayments;
+	private List<Delivery> delivery;
+	
+	
+	/*@OneToMany(mappedBy = "creditCard")
+	private List<DeliveryPayment> deliveryPayments;*/
+	
+	
 
 	public Integer getId() {
 		return id;
@@ -87,13 +94,22 @@ public class CreditCard {
 		this.reservationPayments = reservationPayments;
 	}
 
-	public List<DeliveryPayment> getDeliveryPayments() {
+	public List<Delivery> getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(List<Delivery> delivery) {
+		this.delivery = delivery;
+	}
+
+	
+	/*public List<DeliveryPayment> getDeliveryPayments() {
 		return deliveryPayments;
 	}
 
 	public void setDeliveryPayments(List<DeliveryPayment> deliveryPayments) {
 		this.deliveryPayments = deliveryPayments;
-	}
+	}*/
 
 }
 	

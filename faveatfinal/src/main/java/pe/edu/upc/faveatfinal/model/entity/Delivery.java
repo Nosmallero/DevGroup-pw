@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name = "deliverys")
 public class Delivery {
@@ -24,17 +25,23 @@ public class Delivery {
 	@Column(name = "description", length = 200, nullable = false )
 	private String description;
 	
-	@Column(name = "date_delivery", length = 50, nullable = false )
-	private String dateDelivery;
 	
 	@ManyToOne
 	@JoinColumn(name = "deliveryMan_id")
 	private DeliveryMan deliveryMan;
 	
 	@ManyToOne
-	@JoinColumn(name = "food_id")
-	private Food food;
+	@JoinColumn(name = "order_id")
+	private Order order;
 
+	@ManyToOne
+	@JoinColumn(name = "creditCard_id")
+	private CreditCard creditCard;
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -59,13 +66,6 @@ public class Delivery {
 		this.description = description;
 	}
 
-	public String getDateDelivery() {
-		return dateDelivery;
-	}
-
-	public void setDateDelivery(String dateDelivery) {
-		this.dateDelivery = dateDelivery;
-	}
 
 	public DeliveryMan getDeliveryMan() {
 		return deliveryMan;
@@ -75,14 +75,34 @@ public class Delivery {
 		this.deliveryMan = deliveryMan;
 	}
 
-	
-	public Food getFood() {
-		return food;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setFood(Food food) {
-		this.food = food;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
+
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+
+	
+	
 	
 	
 	

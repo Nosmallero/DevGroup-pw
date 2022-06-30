@@ -27,9 +27,7 @@ public class DeliveryPayment {
 	@Column(name = "payment_Amount", nullable = false)	
 	private float payment_Amount;
 	
-	@ManyToOne
-	@JoinColumn(name = "creditCard_id")
-	private CreditCard creditCard;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "deliveryMan_id")
@@ -59,13 +57,7 @@ public class DeliveryPayment {
 		this.payment_Amount = payment_Amount;
 	}
 
-	public CreditCard getCreditCard() {
-		return creditCard;
-	}
-
-	public void setCreditCard(CreditCard creditCard) {
-		this.creditCard = creditCard;
-	}
+	
 
 	public DeliveryMan getDeliveryMan() {
 		return deliveryMan;
