@@ -116,45 +116,6 @@ public class OrderController {
 		}
 		return "redirect:/orders";
 	}
-	/*
-	@GetMapping("{id}/edit")
-	public String editOrder(Model model, @PathVariable("id") Integer id) {
-		
-		try {
-			if(orderService.existById(id)) {
-				Optional<Order> optional = orderService.findById(id);
-				model.addAttribute("order", optional.get());
-				List<Restaurant> restaurants = restaurantService.getAll();
-				model.addAttribute("restaurants", restaurants);
-				List<Customer> customers = customerService.getAll();
-				model.addAttribute("customers", customers);
-				List<Food> foods = foodService.getAll();
-				model.addAttribute("foods", foods);
-			} else {
-				return "redirect:/orders";
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "orders/edit-order";
-	}
-	
-	@PostMapping("{id}/update")
-	public String updateOrder(Model model, @ModelAttribute("order") Order order, @PathVariable("id") Integer id) {
-		try {
-			if(orderService.existById(id)) {
-				orderService.update(order);
-			} else {
-				return "redirect:/orders";
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "redirect:/orders";
-	}*/
 	
 	
 }
