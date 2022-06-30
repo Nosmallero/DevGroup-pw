@@ -1,5 +1,6 @@
 package pe.edu.upc.faveatfinal.model.entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,26 +11,46 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "reservation")
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "reservation_id")
 	private Integer reservationId;
 
-	@Column(name = "type_reservation",length = 20, nullable = false)
+	@Column(name = "type_reservation",length = 200, nullable = false)
 	private String typeReservation;
 	
-	@Column(name = "date_start_reservation",length = 20, nullable = false)
+	@Column(name = "date_start_reservation",length = 100, nullable = false)
 	private String dateStartReservation;
 	
-	@Column(name = "date_end_reservation",length = 20, nullable = false)
+	@Column(name = "date_end_reservation",length = 100, nullable = false)
 	private String dateEndReservation;
 	
 	@ManyToOne
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 	
+	public ReservationPayment getReservationPayment() {
+		return reservationPayment;
+	}
+
+	public void setReservationPayment(ReservationPayment reservationPayment) {
+		this.reservationPayment = reservationPayment;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "reservationPayment_id")
+	private ReservationPayment reservationPayment;
+	
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
 	public Integer getReservationId() {
 		return reservationId;
 	}
