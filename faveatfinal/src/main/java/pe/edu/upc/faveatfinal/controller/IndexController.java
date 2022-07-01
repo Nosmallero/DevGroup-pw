@@ -40,17 +40,17 @@ public class IndexController {
 	}
 	
 	@PostMapping("/find_food")
-	public String findByFood(Model model, @ModelAttribute("food") Food food) {
+	public String findByFood(Model model, @ModelAttribute("foodSearch") Food foodSearch) {
 		
 		List<Food> foods = new ArrayList<>();
-		model.addAttribute("food", new Food());
 		
 		try {
+			foods = foodService.findByName(foodSearch.getName());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
-		model.addAttribute("foodSearch", food);
+		model.addAttribute("foodSearch", foodSearch);
 		model.addAttribute("foods", foods);
 
 		return "restaurants/search-food-restaurant";

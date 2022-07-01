@@ -40,7 +40,7 @@ public class RestaurantController {
 	@Autowired
 	private FoodService foodService; 
 
-	@GetMapping		//	/students
+	@GetMapping	
 	public String listRestaurant(Model model) {
 		
 		try {
@@ -54,7 +54,7 @@ public class RestaurantController {
 		return "restaurants/list-restaurants";
 	}
 	
-	@GetMapping("new")	//	/students/new
+	@GetMapping("new")
 	public String newRestaurant(Model model) {
 		Restaurant restaurant = new Restaurant();
 		model.addAttribute("restaurant", restaurant);
@@ -68,7 +68,7 @@ public class RestaurantController {
 		return "restaurants/new-restaurants";
 	}
 	
-	@PostMapping("savenew")	//	/students/savenew
+	@PostMapping("savenew")
 	public String saveRestaurant(Model model, @ModelAttribute("restaurant") Restaurant restaurant) {
 		try {
 			Restaurant restaurantSaved = restaurantService.create(restaurant);

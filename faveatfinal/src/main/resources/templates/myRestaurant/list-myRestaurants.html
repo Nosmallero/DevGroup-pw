@@ -10,46 +10,47 @@
 	<div th:replace="/layout/layout :: frag-sidebar"></div>
 	<main>
 	
-  <section>
-  
-  	<nav aria-label="breadcrumb" class="mx-5 mt-3">
-	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Restaurants</li>
-	  </ol>
-	</nav>
-	
-	<div class="card text-center margin-20">
-	  <div class="card-header">
-	    List Restaurants
-	  </div>
-	  <div class="card-body">
-	  </div>
-	  <div class="row d-flex justify-content-center">
-				<div class="card mb-3 mx-5 mt-5 mb-5 col-6"
-					style="max-width: 540px;" th:each="restaurant : ${restaurants}">
-					<div class="row g-0">
-						<div class="col row align-items-center mt-2 mb-2 ms-2 me-2">
-							<img th:src="${restaurant.image}" class="img-fluid rounded-start"
-								width="100%">
-						</div>
-						<div class="col-md-8" style="width: 18rem;">
-							<div class="card-body">
-								<h5 class="card-title" th:text=${restaurant.name_restaurant}></h5>
-								<p class="card-text text-start">
-									<small class="text-muted">Horario de Servicio:</small> <small
-										class="text-muted"
-										th:text="${restaurant.serviceStart + ' - ' + restaurant.serviceEnd}"></small>
-								</p>
-								<p class="card-text text-end">
-									<small class="text-muted" th:text="${restaurant.protocol}"></small>
-								</p>
-								<div class="row d-flex justify-content-center">
-									<div class="col g-0">
-										<a class="btn" th:href="@{/support/reportList}"
-											style="background-color: #130d21; color: white; text-decoration: none">
-											<i class="fa-solid fa-book"></i> Ver Reportes
-										</a>
+		<section>
+
+			<div class="card text-center margin-20">
+				<div class="card-header">List Food</div>
+				<div class="card-body"></div>
+				<div class="row d-flex justify-content-center">
+					<div class="card mb-3 mx-5 mt-5 mb-5 col-6"
+						style="max-width: 540px;" th:each="restaurant : ${restaurants}">
+						<div class="row g-0">
+							<div class="col row align-items-center mt-2 mb-2 ms-2 me-2">
+								<a th:href="@{'/myRestaurant/' + ${restaurant.id} + '/Menu'}" class=""
+									style="font-family: 'Caveat Brush', cursive; color: white; text-decoration: none">
+									<img th:src="${restaurant.image}"
+									class="img-fluid rounded-start" width="100%" /> FavEat
+								</a>
+							</div>
+							<div class="col-md-8" style="width: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title" th:text=${restaurant.name_restaurant}></h5>
+									<p class="card-text text-start">
+										<small class="text-muted">Horario de Servicio:</small> <small
+											class="text-muted"
+											th:text="${restaurant.serviceStart + ' - ' + restaurant.serviceEnd}"></small>
+									</p>
+									<p class="card-text text-end">
+										<small class="text-muted" th:text="${restaurant.protocol}"></small>
+									</p>
+									<div class="row d-flex justify-content-center">
+										<div class="col g-0">
+											<a class="btn" th:href="@{/support/reportList}"
+												style="background-color: #130d21; color: white; text-decoration: none">
+												<i class="fa-solid fa-book"></i> Ver Reportes
+											</a>
+										</div>
+
+										<div class="col g-0">
+											<a class="btn" th:href="@{/deliverys}"
+												style="background-color: #130d21; color: white; text-decoration: none">
+												<i class="fa-solid fa-memo-pad"></i> Ver Boletas
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -57,11 +58,10 @@
 					</div>
 				</div>
 			</div>
-	</div>
-  </section>
+		</section>
 
-</main>
-	
+	</main>
+
 	<footer th:replace="layout/layout :: frag-footer"></footer>
 
 </body>

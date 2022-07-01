@@ -37,13 +37,18 @@ public class InitUser implements CommandLineRunner {
 		User julian = new User("julian", bcpe.encode("julian"), Segment.CUSTOMER, 2);
 		julian.addAuthority("ROLE_CUSTOMER");
 		julian.addAuthority("ACCESS_VIEW_CREDITCARD");
-		userRepository.save(julian);
-		
+		userRepository.save(julian);*/
+		/*
 		User diegos = new User("diegos", bcpe.encode("diegos"), Segment.RESTAURANTOWNER, 1);
 		diegos.addAuthority("ROLE_RESTAURANTOWNER");
 		diegos.addAuthority("ACCESS_VIEW_FOOD");
-		userRepository.save(diegos);
-		
+		userRepository.save(diegos);*/
+		/*
+		User polito = new User("polito", bcpe.encode("polito"), Segment.RESTAURANTOWNER, 2);
+		polito.addAuthority("ROLE_RESTAURANTOWNER");
+		polito.addAuthority("ACCESS_VIEW_FOOD");
+		userRepository.save(polito);*/
+		/*
 		User admin = new User("admin", bcpe.encode("admin"), Segment.RESTAURANTOWNER, 2);
 		admin.addAuthority("ROLE_ADMINISTRATOR");
 		admin.addAuthority("ACCESS_ALL");
